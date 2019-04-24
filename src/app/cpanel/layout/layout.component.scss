@@ -1,0 +1,30 @@
+.app-layout-cont {
+  position: relative;
+  width: 100vw;
+}
+
+.app-topnav-comp {
+  position: absolute;
+  // z-index: 25;
+  top: 0;
+  right: 0;
+
+  width: calc(100vw - 26rem);
+  height: 80px;
+}
+
+.app-sidenav-comp {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 26rem;
+}
+
+.app-content-comp {
+  position: absolute;
+  top: 80px;
+  right: 0;
+
+  width: calc(100vw - 26rem);
+}

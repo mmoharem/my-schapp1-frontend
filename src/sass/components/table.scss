@@ -1,0 +1,25 @@
+table {
+  // width: 100%;
+  // z-index: 30;
+  width: 98%;
+  margin: 3rem auto;
+
+  .avatar-img {
+    width: 4rem;
+    border-radius: 50%;
+  }
+}
+
+.app-table {
+  &__btn {
+    padding: 10rem;
+  }
+
+  // &__min-h {
+  //   max-height: 14rem;
+  // }
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
