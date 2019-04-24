@@ -8,18 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 /////////////////////////////////////
-import { CpanelComponent } from './cpanel/cpanel.component';
-//
-import { PublicComponent } from './cpanel/public/public.component';
-import { HomeComponent } from './cpanel/public/home/home.component';
-import { LoginComponent } from './cpanel/public/login/login.component';
-import { SignupComponent } from './cpanel/public/signup/signup.component';
-//
-import { SecureComponent } from './cpanel/secure/secure.component';
-//
-import { LayoutComponent } from './cpanel/layout/layout.component';
-import { AppSidenavComponent } from './cpanel/layout/app-sidenav/app-sidenav.component';
-import { AppTopnavComponent } from './cpanel/layout/app-topnav/app-topnav.component';
+
 //Services
 import { HttpService } from './cpanel/shared/services/http.service';
 import { TokenService } from './cpanel/shared/services/token.service';
@@ -67,6 +56,12 @@ import { StudentsService } from './cpanel/shared/services/students.service';
 import { UpdateStudentComponent } from './cpanel/layout/app-pages/students/update-student/update-student.component';
 import { ImgUploadService } from './cpanel/shared/services/img-upload.service';
 
+// import { CalendarModule, DateAdapter } from "angular-calendar";
+// import { adapterFactory } from "angular-calendar/date-adapters/date-fns";
+// import { FullCalendarModule } from "@fullcalendar/angular";
+import { CpanelModule } from './cpanel/cpanel.module';
+import { MaterialModule } from './material.module';
+
 // Directives
 
 
@@ -74,70 +69,78 @@ import { ImgUploadService } from './cpanel/shared/services/img-upload.service';
   declarations: [
     AppComponent,
     //
-    CpanelComponent,
-    LayoutComponent,
-    PublicComponent,
-    SecureComponent,
-    HomeComponent,
-    LoginComponent,
-    SignupComponent,
-    AppPagesComponent,
-    AppSidenavComponent,
-    SidenavHeaderComponent,
-    AppTopnavComponent,
-    LinksComponent,
-    StudentsComponent,
-    StudTablesComponent,
-    TestComponent,
-    TeachersComponent,
-    TeachSignupComponent,
-    SchoolComponent,
-    SchGradeComponent,
-    AddGradeComponent,
+    // CpanelComponent,
+    // LayoutComponent,
+    // PublicComponent,
+    // SecureComponent,
+    // HomeComponent,
+    // LoginComponent,
+    // SignupComponent,
+    // AppPagesComponent,
+    // AppSidenavComponent,
+    // SidenavHeaderComponent,
+    // AppTopnavComponent,
+    // LinksComponent,
+    // StudentsComponent,
+    // StudTablesComponent,
+    // TestComponent,
+    // TeachersComponent,
+    // TeachSignupComponent,
+    // SchoolComponent,
+    // SchGradeComponent,
+    // AddGradeComponent,
 
     // Directives
-    OnClickDirective,
+    // OnClickDirective,
 
-    FeesComponent,
+    // FeesComponent,
 
-    AddFeesComponent,
+    // AddFeesComponent,
 
-    ShowFeesComponent,
+    // ShowFeesComponent,
 
-    PaymentsComponent,
+    // PaymentsComponent,
 
-    AddPaymentComponent,
+    // AddPaymentComponent,
 
-    AddStudentComponent,
+    // AddStudentComponent,
 
-    UpdateStudentComponent,
+    // UpdateStudentComponent,
 
   ],
   imports: [
     RouterModule,
-    CommonModule,
+    // CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    CpanelModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    // MaterialModule
     // CpanelModule,
     // MaterialModule,
     //
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatDatepickerModule,
-    MatMomentDateModule,
-    MatSortModule,
-    MatMenuModule
+    MaterialModule,
+    // MatIconModule,
+    // MatSelectModule,
+    // MatFormFieldModule,
+    // MatInputModule,
+    // MatButtonModule,
+    // MatCardModule,
+    // MatTableModule,
+    // MatPaginatorModule,
+    // MatTabsModule,
+    // MatToolbarModule,
+    // MatDatepickerModule,
+    // MatMomentDateModule,
+    // MatSortModule,
+    // MatMenuModule,
+    // CalendarModule.forRoot({
+    //   provide: DateAdapter,
+    //   useFactory: adapterFactory
+    // }),
+    // FullCalendarModule
   ],
   // schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

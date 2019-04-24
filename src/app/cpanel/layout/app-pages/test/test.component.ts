@@ -1,37 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 
-export interface dataElem {
+// import FullCalendar from '@fullcalendar/core/Calendar';
+// import Calendar from '@fullcalendar/core/Calendar';
+// import { FullCalendar } from "@fullcalendar/core/Calendar";
+// declare var Clendar: any;
+import dayGridPlugin from '@fullcalendar/daygrid';
+import dayGrid from '@fullcalendar/daygrid';
+import timeGrid from '@fullcalendar/daygrid';
+import interaction from '@fullcalendar/daygrid';
 
-  id: number,
-  user: {
-    firstName: string,
-    lastName: string,
-    birthDate: string,
-    address: string
-  },
-
-
-  grade: {
-    name: string,
-    level: string,
-
-    fees: {
-      old_schFees: number,
-      schFees: number,
-      old_booksFees: number,
-      booksFees: number,
-    }
-  }
-
-}
-
-export interface del {
-  id: number,
-  firstName: string
-}
 
 @Component({
   selector: 'app-test',
@@ -40,18 +20,9 @@ export interface del {
 })
 export class TestComponent implements OnInit {
 
-  // displayColumn: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'address'];
+  @ViewChild('calendar') calendEl: ElementRef;
 
-  dd: del[] = [
-    {id: 1,
-    firstName: 'name'}
-  ]
-  displayedC: string[] = ['id', 'firstName'];
-   dataS: dataElem;
-
-  form: FormGroup;
-
-  // @ViewChild('picker') picker: MatDatepicker<Date>;
+  calendarPlugins = [interaction ,dayGrid, timeGrid];
 
   constructor(private fb: FormBuilder,
               private httpServ: HttpService) { }
@@ -59,21 +30,8 @@ export class TestComponent implements OnInit {
 
 
   ngOnInit() {
-    this.findeStud();
+    // var calendar = new FullCalendar.Calendar(this.calendEl, {
 
-  }
-
-  findeStud() {
-    let data;
-
-    this.httpServ.postRequest('search', data)
-      .subscribe(
-        results => {
-          console.log(results);
-          this.dataS = results['data'];
-        },
-        error => console.log(error)
-      )
-    ;
+    // })
   }
 }
