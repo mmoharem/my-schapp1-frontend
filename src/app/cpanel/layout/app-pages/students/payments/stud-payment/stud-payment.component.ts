@@ -4,43 +4,19 @@ import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 import * as moment from 'moment/moment';
 import { HttpClient } from '@angular/common/http';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
-
-export interface dataElement {
-
-  id: number,
-  user: {
-    firstName: string,
-    lastName: string,
-    birthDate: string,
-    address: string
-  },
-
-
-  grade: {
-    name: string,
-    level: string,
-
-    fees: {
-      old_schFees: number,
-      schFees: number,
-      old_booksFees: number,
-      booksFees: number,
-    }
-  }
-
-}
+import { studentData } from 'src/app/cpanel/shared/interfaces/app-interface';
 
 @Component({
-  selector: 'app-payments',
-  templateUrl: './payments.component.html',
-  styleUrls: ['./payments.component.scss']
+  selector: 'students-stud-payment',
+  templateUrl: './stud-payment.component.html',
+  styleUrls: ['./stud-payment.component.scss']
 })
-export class PaymentsComponent implements OnInit {
+export class StudPaymentComponent implements OnInit {
 
   private form: FormGroup;
   private grades;
-  private tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'address', 'btn'];
-  private dataS: dataElement[];
+  private tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
+  private dataS: studentData[];
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService,
@@ -53,7 +29,7 @@ export class PaymentsComponent implements OnInit {
 
   private initForm() {
     this.form = this.fB.group({
-      firstName: ['', Validators.required],
+      firstName: [''],
       lastName: '',
       grade: '',
       birthDate: ''
@@ -73,7 +49,7 @@ export class PaymentsComponent implements OnInit {
     // this.httpServ.postRequest('search', data)
     this.http.post('http://127.0.0.1:8000/search', data)
       .subscribe(
-        results => this.dataS = results['data'],
+        (results: studentData[]) => this.dataS = results['data'],
         // results => {
         //   let data: any = results['data'];
         //   data.forEach(dat => {
@@ -86,8 +62,7 @@ export class PaymentsComponent implements OnInit {
     ;
   }
 
-  showStud(student) {
+  showStud(student: studentData) {
     this.studServ.showStudent(student);
   }
-
 }

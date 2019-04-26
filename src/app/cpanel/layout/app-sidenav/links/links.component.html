@@ -2,20 +2,27 @@
 <div class="pages-links__cont">
   <ul class="pages-links__list">
     <li class="pages-links__item"><!-- Students -->
-      <a routerLink="/students" class="pages-links__link" onClick toggle=true>
+      <a class="pages-links__link" onClick toggle=true>
         <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">school</mat-icon>
         <span class="pages-links__link--text">Students</span>
         <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
       </a>
       <div class="collapsed-menu" style="display:none;">
-        <a routerLink="/payments" class="pages-links__link pages-links__link--child">
+        <a routerLink="/students/students" class="pages-links__link pages-links__link--child">
+          <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-hand-holding-usd">
+          </mat-icon>
+          <!-- <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
+          </mat-icon> -->
+          <span class="pages-links__link--text pages-links__link--text__child">Students</span>
+        </a>
+        <a routerLink="/students/payments" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-hand-holding-usd">
           </mat-icon>
           <!-- <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
           </mat-icon> -->
           <span class="pages-links__link--text pages-links__link--text__child">Payments</span>
         </a>
-        <a routerLink="/updatestud" class="pages-links__link pages-links__link--child">
+        <a routerLink="/students/update" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-edit">
           </mat-icon>
           <span class="pages-links__link--text pages-links__link--text__child">Update</span>

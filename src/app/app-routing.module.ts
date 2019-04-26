@@ -13,6 +13,9 @@ import { SchGradeComponent } from './cpanel/layout/app-pages/school/sch-grade/sc
 import { FeesComponent } from './cpanel/layout/app-pages/school/fees/fees.component';
 import { PaymentsComponent } from './cpanel/layout/app-pages/students/payments/payments.component';
 import { UpdateStudentComponent } from './cpanel/layout/app-pages/students/update-student/update-student.component';
+import { PdfPrintComponent } from './cpanel/pdf-print/pdf-print.component';
+import { PrintStudentsAllComponent } from './cpanel/pdf-print/print-students-all/print-students-all.component';
+import { StudMainComponent } from './cpanel/layout/app-pages/students/stud-main/stud-main.component';
 
 const routes: Routes = [
   {
@@ -31,11 +34,13 @@ const routes: Routes = [
       {
         path: 'students', component: StudentsComponent, children:
         [
-          // {path: 'payments', component: PaymentsComponent}
+          {path: 'students', component: StudMainComponent},
+          {path: 'payments', component: PaymentsComponent},
+          {path: 'update', component: UpdateStudentComponent}
         ]
       },
-      {path: 'payments', component: PaymentsComponent},
-      {path: 'updatestud', component: UpdateStudentComponent},
+      // {path: 'payments', component: PaymentsComponent},
+      // {path: 'updatestud', component: UpdateStudentComponent},
       {path: 'test', component: TestComponent},
       //level-2
       {
@@ -47,6 +52,15 @@ const routes: Routes = [
       },
     ]
   },
+
+  {
+    path: 'print',
+    outlet: 'print',
+    component: PdfPrintComponent,
+    // children: [
+    //   {path: 'printStudAll', component: PrintStudentsAllComponent}
+    // ]
+  }
 ];
 
 @NgModule({

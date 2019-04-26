@@ -31,9 +31,15 @@ import { FeesComponent } from './layout/app-pages/school/fees/fees.component';
 import { AddFeesComponent } from './layout/app-pages/school/fees/add-fees/add-fees.component';
 import { ShowFeesComponent } from './layout/app-pages/school/fees/show-fees/show-fees.component';
 import { PaymentsComponent } from './layout/app-pages/students/payments/payments.component';
-import { AddPaymentComponent } from './layout/app-pages/students/payments/add-payment/add-payment.component';
+import { AddPaymentComponent } from './layout/app-pages/students/payments/stud-payment/add-payment/add-payment.component';
 import { AddStudentComponent } from './layout/app-pages/students/add-student/add-student.component';
 import { UpdateStudentComponent } from './layout/app-pages/students/update-student/update-student.component';
+import { PdfPrintComponent } from './pdf-print/pdf-print.component';
+import { PrintStudentsAllComponent } from './pdf-print/print-students-all/print-students-all.component';
+import { StudMainComponent } from './layout/app-pages/students/stud-main/stud-main.component';
+import { PaymMainComponent } from './layout/app-pages/students/payments/paym-main/paym-main.component';
+import { AllPaymentsComponent } from './layout/app-pages/students/payments/all-payments/all-payments.component';
+import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-payment/stud-payment.component';
 
 
 @NgModule({
@@ -73,7 +79,19 @@ import { UpdateStudentComponent } from './layout/app-pages/students/update-stude
     UpdateStudentComponent,
 
     //Directives
-    OnClickDirective
+    OnClickDirective,
+
+    PdfPrintComponent,
+
+    PrintStudentsAllComponent,
+
+    StudMainComponent,
+
+    PaymMainComponent,
+
+    AllPaymentsComponent,
+
+    StudPaymentComponent
   ],
   imports: [
     CommonModule,

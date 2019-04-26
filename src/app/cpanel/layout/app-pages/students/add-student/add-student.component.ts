@@ -5,6 +5,8 @@ import { TokenService } from 'src/app/cpanel/shared/services/token.service';
 import { Router } from '@angular/router';
 import * as moment from 'moment/moment';
 import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.service';
+import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
+import { AppError, BadInput, NotFoundError } from 'src/app/cpanel/shared/classes/app-error';
 
 @Component({
   selector: 'students-add-student',
@@ -20,6 +22,7 @@ export class AddStudentComponent implements OnInit {
 
   constructor(private formBuild: FormBuilder,
               private httpServ: HttpService,
+              private studServ: StudentsService,
               private tokenServ: TokenService,
               private imgUpldServ: ImgUploadService,
               private router: Router) { }
@@ -35,7 +38,7 @@ export class AddStudentComponent implements OnInit {
     this.form = this.formBuild.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      image: ['', Validators.required],
+      image: [''],
       address: ['', Validators.required],
       gender: ['', Validators.required],
       birthDate: ['', Validators.required],
@@ -44,7 +47,7 @@ export class AddStudentComponent implements OnInit {
       mobilePhone: ['', Validators.required],
       medicalState: [''],
       notes: [''],
-      grade: ['', Validators.required],
+      grade: [''],
       class: ['', Validators.required],
       password: ['', Validators.required],
       passwordConfirmation: ['', Validators.required]
@@ -57,6 +60,25 @@ export class AddStudentComponent implements OnInit {
 
     const dateFormat = moment(date).format('YYYY-MM-DD');
     data.birthDate = dateFormat;
+
+    this.studServ.createStudent(data)
+      .subscribe(
+        (results: Response) => console.log(results),
+        // (error: AppError) => {
+        //   if(error instanceof BadInput) {
+        //     console.log(error.originalError)
+
+        //   } else if(error instanceof NotFoundError) {
+        //     alert('This page or url are not Found');
+
+        //   } else {
+        //     alert('An unexpected error occurred.');
+        //     console.log(error);
+        //   }
+        // }
+        (error: Response) => console.log(error)
+      )
+    ;
   }
 
   private uploadImg(e) {

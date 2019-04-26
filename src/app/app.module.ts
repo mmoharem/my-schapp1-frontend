@@ -49,7 +49,7 @@ import { FeesComponent } from './cpanel/layout/app-pages/school/fees/fees.compon
 import { AddFeesComponent } from './cpanel/layout/app-pages/school/fees/add-fees/add-fees.component';
 import { ShowFeesComponent } from './cpanel/layout/app-pages/school/fees/show-fees/show-fees.component';
 import { PaymentsComponent } from './cpanel/layout/app-pages/students/payments/payments.component';
-import { AddPaymentComponent } from './cpanel/layout/app-pages/students/payments/add-payment/add-payment.component';
+import { AddPaymentComponent } from './cpanel/layout/app-pages/students/payments/stud-payment/add-payment/add-payment.component';
 import { AddStudentComponent } from './cpanel/layout/app-pages/students/add-student/add-student.component';
 import { HelpersService } from './cpanel/shared/services/helpers.service';
 import { StudentsService } from './cpanel/shared/services/students.service';
