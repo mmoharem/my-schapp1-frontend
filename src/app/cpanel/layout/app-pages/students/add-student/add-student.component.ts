@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment/moment';
 import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.service';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
+import { ToastrService } from "ngx-toastr";
 import { AppError, BadInput, NotFoundError } from 'src/app/cpanel/shared/classes/app-error';
 
 @Component({
@@ -25,7 +26,8 @@ export class AddStudentComponent implements OnInit {
               private studServ: StudentsService,
               private tokenServ: TokenService,
               private imgUpldServ: ImgUploadService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.httpServ.getGrades();
@@ -50,8 +52,14 @@ export class AddStudentComponent implements OnInit {
       grade: [''],
       class: ['', Validators.required],
       password: ['', Validators.required],
-      passwordConfirmation: ['', Validators.required]
+      password_confirmation: ['', Validators.required]
     });
+  }
+
+  private uploadImg(e) {
+    const image = e.target.files[0];
+
+    this.imgUpldServ.uploadImg(e.target.files[0]);
   }
 
   private submit() {
@@ -60,6 +68,15 @@ export class AddStudentComponent implements OnInit {
 
     const dateFormat = moment(date).format('YYYY-MM-DD');
     data.birthDate = dateFormat;
+
+    if(this.imgObj) {
+      data.image_id = this.imgObj.id;
+
+    } else {
+      this.toastr.error('Error: User Image Require')
+    }
+
+    console.log(data);
 
     this.studServ.createStudent(data)
       .subscribe(
@@ -76,15 +93,12 @@ export class AddStudentComponent implements OnInit {
         //     console.log(error);
         //   }
         // }
-        (error: Response) => console.log(error)
+        (error: any) => {
+          this.toastr.error(error.error.message)
+          console.log(error);
+        }
       )
     ;
-  }
-
-  private uploadImg(e) {
-    const image = e.target.files[0];
-
-    this.imgUpldServ.uploadImg(e.target.files[0]);
   }
 
   handleError(error) {

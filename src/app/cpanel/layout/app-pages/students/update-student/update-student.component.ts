@@ -51,7 +51,7 @@ export class UpdateStudentComponent implements OnInit {
 
     console.log(data);
 
-    this.httpServ.postRequest(`students/${this.imgObj.id}`, data)
+    this.httpServ.postRequest(`students/8`, data)
       .subscribe(
         results => console.log(results),
         error => console.log(error)

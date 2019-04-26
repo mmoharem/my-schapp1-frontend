@@ -40,6 +40,7 @@ import { StudMainComponent } from './layout/app-pages/students/stud-main/stud-ma
 import { PaymMainComponent } from './layout/app-pages/students/payments/paym-main/paym-main.component';
 import { AllPaymentsComponent } from './layout/app-pages/students/payments/all-payments/all-payments.component';
 import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-payment/stud-payment.component';
+import { FindStudComponent } from './layout/app-pages/students/find-stud/find-stud.component';
 
 
 @NgModule({
@@ -91,7 +92,9 @@ import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-
 
     AllPaymentsComponent,
 
-    StudPaymentComponent
+    StudPaymentComponent,
+
+    FindStudComponent
   ],
   imports: [
     CommonModule,

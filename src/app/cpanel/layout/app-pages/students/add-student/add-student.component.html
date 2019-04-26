@@ -1,4 +1,7 @@
 <div class="add-student-cont">
+
+  <mat-card-title class="card-title">Add new Student</mat-card-title>
+
   <!-- Form -->
   <form name="form" [formGroup]="form" (submit)="submit()">
     <div class="form-cont">
@@ -31,10 +34,10 @@
         <div class="flex-row__with-img__upload-cont">
           <button type="button" class="flex-row__with-img__btn" mat-raised-button color="primary"
             (click)="fileInput.click()">Upload</button>
-        <!-- <mat-form-field> -->
+          <!-- <mat-form-field> -->
           <input hidden type="file" (change)="uploadImg($event)" #fileInput required>
           <!-- <mat-error>Gender is Required</mat-error> -->
-        <!-- </mat-form-field> -->
+          <!-- </mat-form-field> -->
           <img class="flex-row__with-img__img" *ngIf="imgObj" src="{{imgObj.url}}" alt="user-image">
           <!-- <img class="user-img" src="http://127.0.0.1:8000/images/php3D2A.tmp.jpg" alt="user-image"> -->
         </div>
@@ -129,7 +132,7 @@
 
         <!-- Confirm Password -->
         <mat-form-field appearance="outline">
-          <input matInput placeholder="Confirm Password" formControlName="passwordConfirmation" required>
+          <input matInput placeholder="Confirm Password" formControlName="password_confirmation" required>
           <mat-icon matSuffix>account_circle</mat-icon>
           <mat-error>Password Conifirmation Required</mat-error>
         </mat-form-field>

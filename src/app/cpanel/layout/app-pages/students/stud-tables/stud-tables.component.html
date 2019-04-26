@@ -1,75 +1,79 @@
 <div class="stud-table-cont">
 
-        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 app-table" *ngIf="dataSource">
+  <mat-card-title class="card-title">All Students</mat-card-title>
 
-            <!--- Note that these columns can be defined in any order.
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 app-table" *ngIf="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
                   The actual rendered columns are set as a property on the row definition" -->
 
-            <!-- Position Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef> ID. </th>
-              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-            </ng-container>
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="firstName">
-              <th mat-header-cell *matHeaderCellDef> First name </th>
-              <td mat-cell *matCellDef="let element"> {{element.user.firstName}} </td>
-            </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First name </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.firstName}} </td>
+    </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="lastName">
-              <th mat-header-cell *matHeaderCellDef> Last name </th>
-              <td mat-cell *matCellDef="let element"> {{element.user.lastName}} </td>
-            </ng-container>
+    <!-- Weight Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last name </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.lastName}} </td>
+    </ng-container>
 
-            <!-- Birth Date -->
-            <ng-container matColumnDef="birthDate">
-              <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
-              <td mat-cell *matCellDef="let element"> {{element.user.birthDate}} </td>
-            </ng-container>
+    <!-- Birth Date -->
+    <ng-container matColumnDef="birthDate">
+      <th mat-header-cell *matHeaderCellDef> Date of Birth </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.birthDate}} </td>
+    </ng-container>
 
-            <!-- Home Phone -->
-            <ng-container matColumnDef="phoneNumber">
-              <th mat-header-cell *matHeaderCellDef> Home Phone </th>
-              <td mat-cell *matCellDef="let element"> {{element.user['phoneNumber']}} </td>
-            </ng-container>
+    <!-- Home Phone -->
+    <ng-container matColumnDef="phoneNumber">
+      <th mat-header-cell *matHeaderCellDef> Home Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.user['phoneNumber']}} </td>
+    </ng-container>
 
-            <!-- Mobile Phone -->
-            <ng-container matColumnDef="mobilePhone">
-              <th mat-header-cell *matHeaderCellDef> Mobile Phone </th>
-              <td mat-cell *matCellDef="let element"> {{element.user.mobilePhone}} </td>
-            </ng-container>
+    <!-- Mobile Phone -->
+    <ng-container matColumnDef="mobilePhone">
+      <th mat-header-cell *matHeaderCellDef> Mobile Phone </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.mobilePhone}} </td>
+    </ng-container>
 
-            <!-- Symbol Column -->
-            <!-- <ng-container matColumnDef="gr">
+    <!-- Symbol Column -->
+    <!-- <ng-container matColumnDef="gr">
               <th mat-header-cell *matHeaderCellDef> Grade </th>
               <td mat-cell *matCellDef="let element"> {{element.grade['name']}} </td>
             </ng-container> -->
 
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="class">
-              <th mat-header-cell *matHeaderCellDef> Class </th>
-              <td mat-cell *matCellDef="let element"> {{element.class}} </td>
-            </ng-container>
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="class">
+      <th mat-header-cell *matHeaderCellDef> Class </th>
+      <td mat-cell *matCellDef="let element"> {{element.class}} </td>
+    </ng-container>
 
-            <!-- Address -->
-            <ng-container matColumnDef="address">
-              <th mat-header-cell *matHeaderCellDef> Address </th>
-              <td mat-cell *matCellDef="let element"> {{element.user.address}} </td>
-            </ng-container>
+    <!-- Address -->
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.user.address}} </td>
+    </ng-container>
 
-            <!-- Image -->
-            <ng-container matColumnDef="image">
-              <th mat-header-cell *matHeaderCellDef> User Image </th>
-              <td mat-cell *matCellDef="let element">
-                <img class="avatar-img" [src]="'http://127.0.0.1:8000/images/'+element.user['images'][0].filename" alt="">
-              </td>
-            </ng-container>
+    <!-- Image -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> User Image </th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="element.user.images[0]">
+          <img class="avatar-img" [src]="'http://127.0.0.1:8000/images/'+element.user['images'][0].filename" alt="">
+        </div>
+      </td>
+    </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
 
 
