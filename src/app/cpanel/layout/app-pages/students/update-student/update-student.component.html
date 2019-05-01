@@ -34,6 +34,7 @@
                   </div><!-- -->
                   <div class="flex-row__with-img__upload-cont">
                     <button type="button" class="flex-row__with-img__btn" mat-raised-button color="primary" (click)="fileInput.click()">Upload</button>
+                    <button type="button" class="flex-row__with-img__btn" mat-raised-button color="primary" (click)="acquireImage()">Scann</button>
                     <input hidden type="file" (change)="uploadImg($event)" #fileInput>
                     <img class="flex-row__with-img__img" *ngIf="imgObj" src="{{imgObj.url}}" alt="user-image">
                     <!-- <img class="user-img" src="http://127.0.0.1:8000/images/php3D2A.tmp.jpg" alt="user-image"> -->

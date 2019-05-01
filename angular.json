@@ -30,7 +30,9 @@
             "styles": [
               "src/sass/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/dwt/dist/dynamsoft.webtwain.min.js"
+            ]
           },
           "configurations": {
             "production": {

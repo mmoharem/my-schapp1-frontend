@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.service';
+declare var Dynamsoft: any;
+declare var WebTwain: any;
 
 @Component({
   selector: 'app-update-student',
@@ -12,6 +14,7 @@ export class UpdateStudentComponent implements OnInit {
 
   private imgObj;
   private form: FormGroup;
+  DWObject: WebTwain;
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService,
@@ -20,6 +23,13 @@ export class UpdateStudentComponent implements OnInit {
   ngOnInit() {
     this.initForm();
     this.imgUpldServ.emitImgObj.subscribe(imgObj => this.imgObj = imgObj);
+
+    Dynamsoft.WebTwainEnv.Load();
+    Dynamsoft.WebTwainEnv.RegisterEvent("OnWebTwainReady", () => { this.Dynamsoft_OnReady() });
+  }
+
+  Dynamsoft_OnReady(): void {
+    this.DWObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
   }
 
   private initForm() {
@@ -61,10 +71,27 @@ export class UpdateStudentComponent implements OnInit {
 
   }
 
-  private uploadImg(e) {
-    const image = e.target.files[0];
+  acquireImage(): void {
+    if (this.DWObject.SelectSource()) {
+      const onAcquireImageSuccess = () => { this.DWObject.CloseSource(); };
+      const onAcquireImageFailure = onAcquireImageSuccess;
+      this.DWObject.OpenSource();
+      this.DWObject.AcquireImage({}, onAcquireImageSuccess, onAcquireImageFailure);
+    }
+  //   const dwObject = Dynamsoft.WebTwainEnv.GetWebTwain('dwtcontrolContainer');
+  //   const bSelected = dwObject.SelectSource();
+  //   if (bSelected) {
+  //     const onAcquireImageSuccess = () => { dwObject.CloseSource(); };
+  //     const onAcquireImageFailure = onAcquireImageSuccess;
+  //     dwObject.OpenSource();
+  //     dwObject.AcquireImage({}, onAcquireImageSuccess, onAcquireImageFailure);
+  // }
+}
 
-    this.imgUpldServ.uploadImg(e.target.files[0]);
+  private uploadImg(e) {
+    // const image = e.target.files[0];
+
+    // this.imgUpldServ.uploadImg(e.target.files[0]);
   }
 
 }
