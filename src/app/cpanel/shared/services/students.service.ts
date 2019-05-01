@@ -29,12 +29,16 @@ export class StudentsService {
       // });
   }
 
-  findStudent() {
+  turnPage(url) {
+    return this.http.get(url);
+  }
 
+  findStudent(data) {
+    return this.http.post(`${this.baseUrl}/search`, data);
   }
 
   createStudent(data) {
-    return this.http.post(`${this.baseUrl}/students`, data)
+    return this.http.post(`${this.baseUrl}/students`, data);
     //   .catch((error: Response) => {
 
     //     if(error.status === 400) {

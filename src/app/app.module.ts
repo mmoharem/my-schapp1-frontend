@@ -24,6 +24,7 @@ import { ToastrModule } from "ngx-toastr";
 //
 import { CpanelModule } from './cpanel/cpanel.module';
 import { MaterialModule } from './material.module';
+import { PaginationModule } from './cpanel/shared/components/pagination/pagination.module';
 
 // Directives
 
@@ -44,6 +45,7 @@ import { MaterialModule } from './material.module';
     //
     MaterialModule,
     ToastrModule.forRoot(),
+    // PaginationModule
   ],
   providers: [
     HttpService,

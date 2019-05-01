@@ -41,6 +41,7 @@ import { PaymMainComponent } from './layout/app-pages/students/payments/paym-mai
 import { AllPaymentsComponent } from './layout/app-pages/students/payments/all-payments/all-payments.component';
 import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-payment/stud-payment.component';
 import { FindStudComponent } from './layout/app-pages/students/find-stud/find-stud.component';
+import { PaginationModule } from './shared/components/pagination/pagination.module';
 
 
 @NgModule({
@@ -94,14 +95,15 @@ import { FindStudComponent } from './layout/app-pages/students/find-stud/find-st
 
     StudPaymentComponent,
 
-    FindStudComponent
+    FindStudComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     MaterialModule,
-    FullCalendarModule
+    FullCalendarModule,
+    PaginationModule
   ],
   exports: [
     CpanelComponent
