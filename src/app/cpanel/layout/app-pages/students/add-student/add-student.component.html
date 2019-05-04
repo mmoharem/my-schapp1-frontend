@@ -104,7 +104,7 @@
         <!-- Grade -->
         <mat-form-field appearance="outline">
           <mat-label>Select Grade</mat-label>
-          <mat-select formControlName="grade">
+          <mat-select formControlName="grade_id">
             <mat-option value="{{grade.id}}" *ngFor="let grade of grades">{{ grade.name }}</mat-option>
           </mat-select>
           <mat-error>Grade is Required</mat-error>

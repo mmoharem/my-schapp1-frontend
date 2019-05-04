@@ -49,7 +49,7 @@ export class AddStudentComponent implements OnInit {
       mobilePhone: ['', Validators.required],
       medicalState: [''],
       notes: [''],
-      grade: [''],
+      grade_id: [''],
       class: ['', Validators.required],
       password: ['', Validators.required],
       password_confirmation: ['', Validators.required]
