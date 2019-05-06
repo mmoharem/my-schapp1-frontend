@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { studentData, userData } from 'src/app/cpanel/shared/interfaces/app-interface';
+import { studentData, userStudData } from 'src/app/cpanel/shared/interfaces/app-interface';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
 import * as moment from 'moment/moment';
 
@@ -16,7 +16,7 @@ export class FindStudComponent implements OnInit {
   private tableColumns: string[] = [
     'id', 'name', 'address', 'gender', 'birthDate', 'grade', 'fees', 'payment', 'image', 'show', 'edite', 'delete'
   ];
-  private dataS: userData[];
+  private dataS: userStudData[];
 
   constructor(private fB: FormBuilder,
               private studServ: StudentsService) { }
@@ -59,7 +59,7 @@ export class FindStudComponent implements OnInit {
     ;
   }
 
-  showStud(student: userData) {
+  showStud(student: userStudData) {
     this.studServ.showStudent(student);
   }
 }

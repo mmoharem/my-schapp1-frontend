@@ -4,7 +4,7 @@ import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 import * as moment from 'moment/moment';
 import { HttpClient } from '@angular/common/http';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
-import { studentData, userData } from 'src/app/cpanel/shared/interfaces/app-interface';
+import { studentData, userStudData } from 'src/app/cpanel/shared/interfaces/app-interface';
 
 @Component({
   selector: 'students-stud-payment',
@@ -16,7 +16,7 @@ export class StudPaymentComponent implements OnInit {
   private form: FormGroup;
   private grades;
   private tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
-  private dataS: userData[];
+  private dataS: userStudData[];
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService,
@@ -63,7 +63,7 @@ export class StudPaymentComponent implements OnInit {
     ;
   }
 
-  showStud(student: userData) {
+  showStud(student: userStudData) {
     this.studServ.showStudent(student);
   }
 }

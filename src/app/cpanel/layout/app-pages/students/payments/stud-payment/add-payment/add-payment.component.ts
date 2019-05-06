@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
-import { userData, paymentEl } from 'src/app/cpanel/shared/interfaces/app-interface';
+import { userStudData, paymentEl } from 'src/app/cpanel/shared/interfaces/app-interface';
 
 @Component({
   selector: 'app-add-payment',
@@ -15,7 +15,7 @@ export class AddPaymentComponent implements OnInit {
   private tableColumns: string[] = ['id', 'type', 'amount', 'date'];
   private showStudent: FormGroup;
   private addPayment: FormGroup;
-  private student: userData;
+  private student: userStudData;
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService,
@@ -28,7 +28,7 @@ export class AddPaymentComponent implements OnInit {
 
   }
 
-  next = (student: userData) => {
+  next = (student: userStudData) => {
     this.student = student;
     this.getPayments(student.student.id);
     // console.log(this.student.id);

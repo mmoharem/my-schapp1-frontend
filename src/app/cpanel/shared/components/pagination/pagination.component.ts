@@ -8,9 +8,9 @@ import { PaginationService, dataObj } from './pagination.service';
 })
 export class PaginationComponent implements OnInit {
 
-  @Input('perPage') perPage = 4;
-  perPageCheck;
-  @Input() data;
+  @Input('perPage') perPage: number = 4;
+  perPageCheck: number;
+  @Input() data: Response;
   // private dataSource;
 
   constructor(private paginServ: PaginationService) { }
@@ -19,10 +19,6 @@ export class PaginationComponent implements OnInit {
     this.perPageCheck = this.perPage;
   }
 
-  // ngOnChanges() {
-  //   console.log('changes');
-  // }
-
   ngDoCheck() {
     if(this.perPage === this.perPageCheck) {
       return;
@@ -30,12 +26,9 @@ export class PaginationComponent implements OnInit {
 
     this.perPageCheck = this.perPage;
     this.paginate('perPage');
-    // console.log('docheck');
-    // console.log(this.perPage);
   }
 
   paginate(state) {
-
     this.paginServ.paginate(state, this.data, this.perPage);
   }
 

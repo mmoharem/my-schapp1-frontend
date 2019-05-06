@@ -10,13 +10,13 @@ export interface dataObj {
 @Injectable({
   providedIn: 'root'
 })
+
 export class PaginationService {
 
   changeEmit = new Subject;
   responseEmit = new Subject;
   dataErrEmit = new Subject;
   response: dataObj;
-  testres: {};
 
   constructor(private http: HttpClient) { }
 

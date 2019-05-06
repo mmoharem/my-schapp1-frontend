@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 
 import * as moment from 'moment/moment';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { userData } from '../../interfaces/app-interface';
+import { userStudData } from '../../interfaces/app-interface';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class FindStudentsComponent implements OnInit {
 
   private form: FormGroup;
-  private dataSource: userData;
+  private dataSource: userStudData;
 
   constructor(private http: HttpClient,
               private fB: FormBuilder) { }

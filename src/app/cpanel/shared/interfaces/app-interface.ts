@@ -36,7 +36,7 @@ export interface studentData {
   }
 }
 
-export interface userData {
+export interface userStudData {
   id: number,
   firstName: string,
   lastName: string,

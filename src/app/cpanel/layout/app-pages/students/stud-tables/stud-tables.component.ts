@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
 import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 import 'rxjs/add/operator/map'
-import { studentData } from 'src/app/cpanel/shared/interfaces/app-interface';
+import { userStudData } from 'src/app/cpanel/shared/interfaces/app-interface';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
 import { AppError } from 'src/app/cpanel/shared/classes/app-error';
 import { PaginationService, dataObj } from 'src/app/cpanel/shared/components/pagination/pagination.service';
@@ -14,9 +14,9 @@ import { PaginationService, dataObj } from 'src/app/cpanel/shared/components/pag
 export class StudTablesComponent implements OnInit {
 
   @Input('perPage') perPage = 2;
-  private data;
+  private data: Response;
   private displayedColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
-  private dataSource: studentData[];
+  private dataSource: userStudData[];
 
   constructor(private httpServ: HttpService,
               private studServ: StudentsService,

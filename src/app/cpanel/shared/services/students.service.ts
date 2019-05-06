@@ -5,7 +5,7 @@ import { AppError, NotFoundError, BadInput } from '../classes/app-error';
 // import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
-import { userData } from '../interfaces/app-interface';
+import { userStudData } from '../interfaces/app-interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class StudentsService {
 
   emitStudent = new Subject();
 
-  showStudent(student: userData) {
+  showStudent(student: userStudData) {
     this.emitStudent.next(student);
   }
 
