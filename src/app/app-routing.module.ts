@@ -19,6 +19,7 @@ import { StudMainComponent } from './cpanel/layout/app-pages/students/stud-main/
 import { StudTablesComponent } from './cpanel/layout/app-pages/students/stud-tables/stud-tables.component';
 import { AddStudentComponent } from './cpanel/layout/app-pages/students/add-student/add-student.component';
 import { FindStudComponent } from './cpanel/layout/app-pages/students/find-stud/find-stud.component';
+import { TeachersComponent } from './cpanel/layout/app-pages/teachers/teachers.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,18 @@ const routes: Routes = [
     path: '',
     component: AppPagesComponent,
     children: [
+
+      //School
+      {
+        path: 'school',
+        component: SchoolComponent,
+        children:
+        [
+          {path: 'grade', component: SchGradeComponent},
+          {path: 'fees', component: FeesComponent},
+        ]
+      },
+
       //Students
       {
         path: 'students',
@@ -62,14 +75,13 @@ const routes: Routes = [
         ]
       },
 
-      //School
+      //Teachers
       {
-        path: 'school',
-        component: SchoolComponent,
+        path: 'teachers',
+        component: TeachersComponent,
         children:
         [
-          {path: 'grade', component: SchGradeComponent},
-          {path: 'fees', component: FeesComponent},
+
         ]
       },
 

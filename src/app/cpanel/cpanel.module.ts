@@ -42,6 +42,7 @@ import { AllPaymentsComponent } from './layout/app-pages/students/payments/all-p
 import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-payment/stud-payment.component';
 import { FindStudComponent } from './layout/app-pages/students/find-stud/find-stud.component';
 import { PaginationModule } from './shared/components/pagination/pagination.module';
+import { FindStudentsComponent } from './shared/components/find-students/find-students.component';
 
 
 @NgModule({
@@ -96,6 +97,8 @@ import { PaginationModule } from './shared/components/pagination/pagination.modu
     StudPaymentComponent,
 
     FindStudComponent,
+
+    FindStudentsComponent,
   ],
   imports: [
     CommonModule,

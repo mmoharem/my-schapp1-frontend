@@ -8,7 +8,7 @@ import { PaginationService, dataObj } from './pagination.service';
 })
 export class PaginationComponent implements OnInit {
 
-  @Input('perPage') perPage = 2;
+  @Input('perPage') perPage = 4;
   perPageCheck;
   @Input() data;
   // private dataSource;

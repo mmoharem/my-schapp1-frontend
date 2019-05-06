@@ -1,27 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpService } from 'src/app/cpanel/shared/services/http.service';
+
+
 import * as moment from 'moment/moment';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { userData } from '../../interfaces/app-interface';
 import { HttpClient } from '@angular/common/http';
-import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
-import { studentData, userData } from 'src/app/cpanel/shared/interfaces/app-interface';
 
 @Component({
-  selector: 'students-stud-payment',
-  templateUrl: './stud-payment.component.html',
-  styleUrls: ['./stud-payment.component.scss']
+  selector: 'app-find-students',
+  templateUrl: './find-students.component.html',
+  styleUrls: ['./find-students.component.scss']
 })
-export class StudPaymentComponent implements OnInit {
+export class FindStudentsComponent implements OnInit {
 
   private form: FormGroup;
-  private grades;
-  private tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
-  private dataS: userData[];
+  private dataSource: userData;
 
-  constructor(private fB: FormBuilder,
-              private httpServ: HttpService,
-              private http: HttpClient,
-              private studServ: StudentsService) { }
+  constructor(private http: HttpClient,
+              private fB: FormBuilder) { }
 
   ngOnInit() {
     this.initForm();
@@ -49,7 +45,7 @@ export class StudPaymentComponent implements OnInit {
     // this.httpServ.postRequest('search', data)
     this.http.post('http://127.0.0.1:8000/students/search', data)
       .subscribe(
-        (results: Response) => this.dataS = results['data']['data'],
+        (results: Response) => this.dataSource = results['data']['data'],
         // results => {
         //   this.dataS = results['data']['data'];
         //   let data: any = results['data']['data'];
@@ -63,7 +59,4 @@ export class StudPaymentComponent implements OnInit {
     ;
   }
 
-  showStud(student: userData) {
-    this.studServ.showStudent(student);
-  }
 }

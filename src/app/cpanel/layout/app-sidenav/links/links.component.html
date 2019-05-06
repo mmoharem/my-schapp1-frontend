@@ -1,6 +1,30 @@
 <!--  -->
 <div class="pages-links__cont">
   <ul class="pages-links__list">
+      <li class="pages-links__item"><!-- School -->
+        <a class="pages-links__link" onClick toggle=true>
+          <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">account_balance</mat-icon>
+          <span class="pages-links__link--text">School</span>
+          <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
+        </a>
+        <div class="collapsed-menu" style="display:none;">
+          <a routerLink="/school/grade" class="pages-links__link pages-links__link--child">
+            <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
+            </mat-icon>
+            <span class="pages-links__link--text pages-links__link--text__child">Grade</span>
+          </a>
+          <a routerLink="/school/fees" class="pages-links__link pages-links__link--child">
+            <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-comments-dollar">
+            </mat-icon>
+            <span class="pages-links__link--text pages-links__link--text__child">Fees</span>
+          </a>
+          <a routerLink="/students" class="pages-links__link pages-links__link--child">
+            <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
+            </mat-icon>
+            <span class="pages-links__link--text pages-links__link--text__child">Students</span>
+          </a>
+        </div>
+      </li>
     <li class="pages-links__item"><!-- Students -->
       <a class="pages-links__link" onClick toggle=true>
         <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">school</mat-icon>
@@ -29,27 +53,31 @@
         </a>
       </div>
     </li>
-    <li class="pages-links__item"><!-- School -->
+    <li class="pages-links__item"><!-- Teachers -->
       <a class="pages-links__link" onClick toggle=true>
         <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">account_balance</mat-icon>
-        <span class="pages-links__link--text">School</span>
+        <span class="pages-links__link--text">Teachers</span>
         <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
       </a>
       <div class="collapsed-menu" style="display:none;">
-        <a routerLink="/school/grade" class="pages-links__link pages-links__link--child">
+        <a routerLink="/teachers" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
           </mat-icon>
-          <span class="pages-links__link--text pages-links__link--text__child">Grade</span>
+          <span class="pages-links__link--text pages-links__link--text__child">Teachers</span>
         </a>
-        <a routerLink="/school/fees" class="pages-links__link pages-links__link--child">
-          <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-comments-dollar">
-          </mat-icon>
-          <span class="pages-links__link--text pages-links__link--text__child">Fees</span>
-        </a>
-        <a routerLink="/students" class="pages-links__link pages-links__link--child">
+      </div>
+    </li>
+    <li class="pages-links__item"><!-- Employee -->
+      <a class="pages-links__link" onClick toggle=true>
+        <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">account_balance</mat-icon>
+        <span class="pages-links__link--text">Employee</span>
+        <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
+      </a>
+      <div class="collapsed-menu" style="display:none;">
+        <a routerLink="/teachers" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
           </mat-icon>
-          <span class="pages-links__link--text pages-links__link--text__child">Students</span>
+          <span class="pages-links__link--text pages-links__link--text__child">Employee</span>
         </a>
       </div>
     </li>

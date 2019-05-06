@@ -60,31 +60,31 @@
           <!-- Position Column -->
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> ID. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.student.id}} </td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="firstName">
             <th mat-header-cell *matHeaderCellDef> First Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.user.firstName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
           </ng-container>
 
           <!-- Weight Column -->
           <ng-container matColumnDef="lastName">
             <th mat-header-cell *matHeaderCellDef> Last Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.user.lastName}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
           </ng-container>
 
           <!-- Birth Date -->
           <ng-container matColumnDef="birthDate">
             <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
-            <td mat-cell *matCellDef="let element"> {{element.user.birthDate}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.birthDate}} </td>
           </ng-container>
 
           <!-- Home Phone -->
           <ng-container matColumnDef="grade">
             <th mat-header-cell *matHeaderCellDef> Grade </th>
-            <td mat-cell *matCellDef="let element"> {{element.grade.name}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.student.grade.name}} </td>
           </ng-container>
 
           <!-- Mobile Phone -->
@@ -97,7 +97,9 @@
           <ng-container matColumnDef="image">
             <th mat-header-cell *matHeaderCellDef> User Image </th>
             <td mat-cell *matCellDef="let element">
-              <img class="avatar-img" [src]="'http://127.0.0.1:8000/images/'+element.user['images'][0].filename"
+              <!-- <img class="avatar-img" [src]="'http://127.0.0.1:8000/images/'+element.user['images'][0].filename"
+                alt="user-image"> -->
+              <img class="avatar-img" [src]="'http://127.0.0.1:8000/images/'+element.images[0].filename"
                 alt="user-image">
             </td>
           </ng-container>

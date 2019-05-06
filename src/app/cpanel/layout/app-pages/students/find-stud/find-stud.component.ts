@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { studentData } from 'src/app/cpanel/shared/interfaces/app-interface';
+import { studentData, userData } from 'src/app/cpanel/shared/interfaces/app-interface';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
 import * as moment from 'moment/moment';
 
@@ -16,7 +16,7 @@ export class FindStudComponent implements OnInit {
   private tableColumns: string[] = [
     'id', 'name', 'address', 'gender', 'birthDate', 'grade', 'fees', 'payment', 'image', 'show', 'edite', 'delete'
   ];
-  private dataS: studentData[];
+  private dataS: userData[];
 
   constructor(private fB: FormBuilder,
               private studServ: StudentsService) { }
@@ -46,7 +46,7 @@ export class FindStudComponent implements OnInit {
 
     this.studServ.findStudent(data)
       .subscribe(
-        (results: studentData[]) => this.dataS = results['data'],
+        (results: Response) => this.dataS = results['data']['data'],
         // results => {
         //   let data: any = results['data'];
         //   data.forEach(dat => {
@@ -59,7 +59,7 @@ export class FindStudComponent implements OnInit {
     ;
   }
 
-  showStud(student: studentData) {
+  showStud(student: userData) {
     this.studServ.showStudent(student);
   }
 }

@@ -9,43 +9,43 @@
           <mat-form-field class="cust-form" appearance="outline">
             <mat-label class="cust-form__label">Student Name</mat-label>
             <input class="cust-form__input" matInput
-              value="{{student.user.firstName | titlecase}} {{student.user.lastName | titlecase}}" readonly>
+              value="{{student.firstName | titlecase}} {{student.lastName | titlecase}}" readonly>
             <mat-icon class="cust-form__icon" matSuffix>account_circle</mat-icon>
           </mat-form-field>
 
           <mat-form-field class="cust-form" appearance="outline">
             <mat-label class="cust-form__label">Date Of Birth</mat-label>
-            <input class="cust-form__input" matInput value="{{student.user.birthDate}}" readonly>
+            <input class="cust-form__input" matInput value="{{student.birthDate}}" readonly>
             <mat-icon class="cust-form__icon" matSuffix>account_circle</mat-icon>
           </mat-form-field>
 
           <mat-form-field class="cust-form" appearance="outline">
             <mat-label class="cust-form__label">Grade</mat-label>
-            <input class="cust-form__input" matInput value="{{student.grade.name}}" readonly>
+            <input class="cust-form__input" matInput value="{{student.student.grade.name}}" readonly>
             <mat-icon class="cust-form__icon" matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div><!-- End flex row -->
         <div class="flex-row flex-row__col-4">
           <mat-form-field class="cust-form" appearance="outline">
             <mat-label class="cust-form__label--danger">Old School Fees</mat-label>
-            <input class="cust-form__input" matInput value="{{student.grade.fees.old_schFees}}" readonly>
+            <input class="cust-form__input" matInput value="{{student.student.grade.fees.old_schFees}}" readonly>
             <mat-icon class="cust-form__icon" matSuffix>account_circle</mat-icon>
           </mat-form-field>
 
           <mat-form-field class="cust-form" appearance="outline">
             <mat-label class="cust-form__label">School Fees</mat-label>
-            <input class="cust-form__input" matInput value="{{student.grade.fees.schFees}}" readonly>
+            <input class="cust-form__input" matInput value="{{student.student.grade.fees.schFees}}" readonly>
             <mat-icon class="cust-form__icon" matSuffix>account_circle</mat-icon>
           </mat-form-field>
           <mat-form-field class="cust-form" appearance="outline">
             <mat-label class="cust-form__label--danger">Old Books Fees</mat-label>
-            <input class="cust-form__input" matInput value="{{student.grade.fees.old_booksFees}}" readonly>
+            <input class="cust-form__input" matInput value="{{student.student.grade.fees.old_booksFees}}" readonly>
             <mat-icon class="cust-form__icon" matSuffix>account_circle</mat-icon>
           </mat-form-field>
 
           <mat-form-field class="cust-form" appearance="outline">
             <mat-label class="cust-form__label">Books Fees</mat-label>
-            <input class="cust-form__input" matInput value="{{student.grade.fees.booksFees}}" readonly>
+            <input class="cust-form__input" matInput value="{{student.student.grade.fees.booksFees}}" readonly>
             <mat-icon class="cust-form__icon" matSuffix>account_circle</mat-icon>
           </mat-form-field>
         </div><!-- End flex row -->
@@ -90,7 +90,7 @@
   </div>
 
   <div class="show-payments" *ngIf="dataSource">
-    <mat-card-title class="card-title">{{student.user.firstName}} All Payments</mat-card-title>
+    <mat-card-title class="card-title">{{student.firstName}} All Payments</mat-card-title>
     <table class="app-table" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <!--- Note that these columns can be defined in any order.
