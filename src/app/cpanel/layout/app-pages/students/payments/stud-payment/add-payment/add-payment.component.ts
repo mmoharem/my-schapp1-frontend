@@ -11,11 +11,16 @@ import { userStudData, paymentEl } from 'src/app/cpanel/shared/interfaces/app-in
 })
 export class AddPaymentComponent implements OnInit {
 
-  private dataSource: paymentEl[];
-  private tableColumns: string[] = ['id', 'type', 'amount', 'date'];
-  private showStudent: FormGroup;
-  private addPayment: FormGroup;
-  private student: userStudData;
+  // private dataSource: paymentEl[];
+  // private tableColumns: string[] = ['id', 'type', 'amount', 'date'];
+  // private showStudent: FormGroup;
+  // private addPayment: FormGroup;
+  // private student: userStudData;
+  dataSource: paymentEl[];
+  tableColumns: string[] = ['id', 'type', 'amount', 'date'];
+  showStudent: FormGroup;
+  addPayment: FormGroup;
+  student: userStudData;
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService,
@@ -57,7 +62,8 @@ export class AddPaymentComponent implements OnInit {
     console.log(id);
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
 
     const data = this.addPayment.getRawValue();
 

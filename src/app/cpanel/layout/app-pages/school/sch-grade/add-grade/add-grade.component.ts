@@ -9,7 +9,8 @@ import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 })
 export class AddGradeComponent implements OnInit {
 
-  private form: FormGroup;
+  // private form: FormGroup;
+  form: FormGroup;
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService) { }
@@ -21,7 +22,8 @@ export class AddGradeComponent implements OnInit {
     })
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
     const data = this.form.getRawValue();
 
     this.httpServ.postRequest('school/grade', data)

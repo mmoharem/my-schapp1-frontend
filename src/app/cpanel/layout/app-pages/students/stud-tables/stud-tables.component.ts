@@ -14,9 +14,12 @@ import { PaginationService, dataObj } from 'src/app/cpanel/shared/components/pag
 export class StudTablesComponent implements OnInit {
 
   @Input('perPage') perPage = 2;
-  private data: Response;
-  private displayedColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
-  private dataSource: userStudData[];
+  // private data: Response;
+  // private displayedColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
+  // private dataSource: userStudData[];
+  data: Response;
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
+  dataSource: userStudData[];
 
   constructor(private httpServ: HttpService,
               private studServ: StudentsService,

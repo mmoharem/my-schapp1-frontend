@@ -13,10 +13,14 @@ import { studentData, userStudData } from 'src/app/cpanel/shared/interfaces/app-
 })
 export class StudPaymentComponent implements OnInit {
 
-  private form: FormGroup;
-  private grades;
-  private tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
-  private dataS: userStudData[];
+  // private form: FormGroup;
+  form: FormGroup;
+  // private grades;
+  grades;
+  // private tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
+  tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
+  // private dataS: userStudData[];
+  dataS: userStudData[];
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService,
@@ -36,7 +40,8 @@ export class StudPaymentComponent implements OnInit {
     });
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
     const data = this.form.getRawValue();
     const date = this.form.value['birthDate'];
     let dateFormated;

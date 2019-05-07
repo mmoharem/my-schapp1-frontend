@@ -23,8 +23,10 @@ export interface feesElement {
 })
 export class ShowFeesComponent implements OnInit {
 
-  private dataSource: feesElement[];
-  private displayedColumns: string[] = ['id', 'grade', 'level', 'old_schoolFees', 'old_bookslFees', 'old_totFees', 'schoolFees', 'bookslFees', 'totFees'];
+  // private dataSource: feesElement[];
+  dataSource: feesElement[];
+  // private displayedColumns: string[] = ['id', 'grade', 'level', 'old_schoolFees', 'old_bookslFees', 'old_totFees', 'schoolFees', 'bookslFees', 'totFees'];
+  displayedColumns: string[] = ['id', 'grade', 'level', 'old_schoolFees', 'old_bookslFees', 'old_totFees', 'schoolFees', 'bookslFees', 'totFees'];
 
   constructor(private httpServ: HttpService) { }
 

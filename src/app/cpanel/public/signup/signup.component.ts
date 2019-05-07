@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
 
-  private form:FormGroup;
+  // private form:FormGroup;
+  form:FormGroup;
   error = [];
 
   constructor(private formB: FormBuilder,
@@ -30,7 +31,8 @@ export class SignupComponent implements OnInit {
     });
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
     const data = this.form.getRawValue();
 
     this.httpServ.signUp(data).subscribe(

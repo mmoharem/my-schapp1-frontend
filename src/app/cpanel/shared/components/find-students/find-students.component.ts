@@ -13,8 +13,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FindStudentsComponent implements OnInit {
 
-  private form: FormGroup;
-  private dataSource: userStudData;
+  // private form: FormGroup;
+  form: FormGroup;
+  // private dataSource: userStudData;
+  dataSource: userStudData;
 
   constructor(private http: HttpClient,
               private fB: FormBuilder) { }
@@ -32,7 +34,8 @@ export class FindStudentsComponent implements OnInit {
     });
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
     const data = this.form.getRawValue();
     const date = this.form.value['birthDate'];
     let dateFormated;

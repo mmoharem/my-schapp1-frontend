@@ -17,7 +17,8 @@ import { AppError, BadInput, NotFoundError } from 'src/app/cpanel/shared/classes
 export class AddStudentComponent implements OnInit {
 
   grades = [];
-  private imgObj;
+  // private imgObj;
+  imgObj;
   form: FormGroup;
   error = [];
 
@@ -42,7 +43,7 @@ export class AddStudentComponent implements OnInit {
       lastName: ['', Validators.required],
       image: [''],
       address: ['', Validators.required],
-      gender: ['', Validators.required],
+      // gender: ['', Validators.required],
       birthDate: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],
@@ -56,13 +57,15 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
-  private uploadImg(e) {
+  // private uploadImg(e) {
+  uploadImg(e) {
     const image = e.target.files[0];
 
     this.imgUpldServ.uploadImg(e.target.files[0]);
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
     const data = this.form.getRawValue();
     const date = this.form.value['birthDate'];
 

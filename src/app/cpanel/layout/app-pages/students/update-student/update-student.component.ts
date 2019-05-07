@@ -10,8 +10,10 @@ import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.serv
 })
 export class UpdateStudentComponent implements OnInit {
 
-  private imgObj;
-  private form: FormGroup;
+  // private imgObj;
+  imgObj;
+  // private form: FormGroup;
+  form: FormGroup;
 
   constructor(private fB: FormBuilder,
               private httpServ: HttpService,
@@ -42,7 +44,8 @@ export class UpdateStudentComponent implements OnInit {
     });
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
     const data = this.form.getRawValue();
 
     if(this.imgObj) {
@@ -61,7 +64,8 @@ export class UpdateStudentComponent implements OnInit {
 
   }
 
-  private uploadImg(e) {
+  // private uploadImg(e) {
+  uploadImg(e) {
     const image = e.target.files[0];
 
     this.imgUpldServ.uploadImg(e.target.files[0]);

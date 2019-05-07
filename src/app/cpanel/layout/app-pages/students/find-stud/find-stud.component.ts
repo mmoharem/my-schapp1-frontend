@@ -11,12 +11,16 @@ import * as moment from 'moment/moment';
 })
 export class FindStudComponent implements OnInit {
 
-  private form: FormGroup;
-  private grades;
-  private tableColumns: string[] = [
+  // private form: FormGroup;
+  form: FormGroup;
+  // private grades;
+  grades;
+  // private tableColumns: string[] = [
+  tableColumns: string[] = [
     'id', 'name', 'address', 'gender', 'birthDate', 'grade', 'fees', 'payment', 'image', 'show', 'edite', 'delete'
   ];
-  private dataS: userStudData[];
+  // private dataS: userStudData[];
+  dataS: userStudData[];
 
   constructor(private fB: FormBuilder,
               private studServ: StudentsService) { }
@@ -34,7 +38,8 @@ export class FindStudComponent implements OnInit {
     });
   }
 
-  private submit() {
+  // private submit() {
+  submit() {
     const data = this.form.getRawValue();
     const date = this.form.value['birthDate'];
     let dateFormated;
