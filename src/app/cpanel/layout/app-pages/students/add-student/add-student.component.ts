@@ -43,7 +43,7 @@ export class AddStudentComponent implements OnInit {
       lastName: ['', Validators.required],
       image: [''],
       address: ['', Validators.required],
-      // gender: ['', Validators.required],
+      gender: ['', Validators.required],
       birthDate: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', Validators.required],

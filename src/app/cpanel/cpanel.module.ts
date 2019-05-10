@@ -41,8 +41,10 @@ import { PaymMainComponent } from './layout/app-pages/students/payments/paym-mai
 import { AllPaymentsComponent } from './layout/app-pages/students/payments/all-payments/all-payments.component';
 import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-payment/stud-payment.component';
 import { FindStudComponent } from './layout/app-pages/students/find-stud/find-stud.component';
-import { PaginationModule } from './shared/components/pagination/pagination.module';
-import { FindStudentsComponent } from './shared/components/find-students/find-students.component';
+import { ComponentsModule } from './shared/components/components.module';
+// import { PaginationModule } from './shared/components/pagination/pagination.module';
+// import { FindStudentsComponent } from './shared/components/find-students/find-students.component';
+// import { StudTableComponent } from './shared/components/stud-table/stud-table.component';
 
 
 @NgModule({
@@ -98,7 +100,9 @@ import { FindStudentsComponent } from './shared/components/find-students/find-st
 
     FindStudComponent,
 
-    FindStudentsComponent,
+    // FindStudentsComponent,
+
+    // StudTableComponent,
   ],
   imports: [
     CommonModule,
@@ -106,7 +110,8 @@ import { FindStudentsComponent } from './shared/components/find-students/find-st
     ReactiveFormsModule,
     MaterialModule,
     FullCalendarModule,
-    PaginationModule
+    // PaginationModule,
+    ComponentsModule
   ],
   exports: [
     CpanelComponent

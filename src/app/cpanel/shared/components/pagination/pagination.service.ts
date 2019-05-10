@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
-
-export interface dataObj {
-  results: Response,
-  error: Response
-};
+import { CompHttpService } from '../comp-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,42 +9,18 @@ export interface dataObj {
 
 export class PaginationService {
 
-  changeEmit = new Subject;
-  responseEmit = new Subject;
-  dataErrEmit = new Subject;
-  response: dataObj;
+  // changeEmit = new Subject;
+  // responseEmit = new Subject;
+  // dataErrEmit = new Subject;
+  emitUrl = new Subject;
 
-  constructor(private http: HttpClient) { }
-
-  turnPage(url) {
-    let dataRes: Response;
-    let dataErr: Response;
-
-    this.http.get(url)
-      .subscribe
-      (
-        (results: Response) =>
-        {
-          dataRes = results;
-          this.responseEmit.next({results: results});
-        },
-
-        (error: Response) =>
-        {
-          dataErr = error;
-          this.responseEmit.next({error: error})
-        }
-      )
-
-    ;
-  }
+  constructor(private compHttp: CompHttpService) { }
 
   paginate(state: string, data, perPage: number) {
 
     let url;
-    const cur = data.current_page;
+    // const cur = data.current_page;
     const path = data.path;
-    console.log(perPage)
 
     if(state === 'perPage') {
       url = `${path}?page=1&per_page=${perPage}`;
@@ -59,9 +31,12 @@ export class PaginationService {
     } else if(state === 'back') {
       url = `${data.prev_page_url}&per_page=${perPage}`;
     }
-    this.turnPage(url);
-    console.log(url);
+
+    if(path.includes('search')) {
+      this.compHttp.postRequest(url);
+      return;
+    }
+
+    this.compHttp.getRequest(url);
   }
-
-
 }

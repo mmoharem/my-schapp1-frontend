@@ -16,7 +16,7 @@ export class StudPaymentComponent implements OnInit {
   // private form: FormGroup;
   form: FormGroup;
   // private grades;
-  grades;
+  grades = [];
   // private tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
   tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'grade', 'image', 'btn'];
   // private dataS: userStudData[];
@@ -28,6 +28,8 @@ export class StudPaymentComponent implements OnInit {
               private studServ: StudentsService) { }
 
   ngOnInit() {
+    // this.httpServ.getGrades();
+    this.httpServ.emitGrade.subscribe((grades: any) => this.grades = grades)
     this.initForm();
   }
 
@@ -35,7 +37,7 @@ export class StudPaymentComponent implements OnInit {
     this.form = this.fB.group({
       firstName: [''],
       lastName: '',
-      grade: '',
+      grade_id: '',
       birthDate: ''
     });
   }

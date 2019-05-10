@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { studentData, userStudData } from 'src/app/cpanel/shared/interfaces/app-interface';
-import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
+import { userStudData } from 'src/app/cpanel/shared/interfaces/app-interface';
 import * as moment from 'moment/moment';
+import { CompHttpService } from 'src/app/cpanel/shared/components/comp-http.service';
+import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 
 @Component({
   selector: 'app-find-stud',
@@ -11,60 +12,51 @@ import * as moment from 'moment/moment';
 })
 export class FindStudComponent implements OnInit {
 
-  // private form: FormGroup;
-  form: FormGroup;
-  // private grades;
+
   grades;
-  // private tableColumns: string[] = [
+  form: FormGroup;
+  data: Response;
+  dataS: userStudData[];
+  searchData;
+
   tableColumns: string[] = [
     'id', 'name', 'address', 'gender', 'birthDate', 'grade', 'fees', 'payment', 'image', 'show', 'edite', 'delete'
   ];
-  // private dataS: userStudData[];
-  dataS: userStudData[];
+
 
   constructor(private fB: FormBuilder,
-              private studServ: StudentsService) { }
+              private compHttp: CompHttpService,
+              private httpServ: HttpService) { }
 
   ngOnInit() {
     this.initForm();
+    this.httpServ.emitGrade.subscribe(grades => this.grades = grades);
   }
 
   private initForm() {
     this.form = this.fB.group({
       firstName: [''],
       lastName: '',
-      grade: '',
+      grade_id: '',
       birthDate: ''
     });
   }
 
-  // private submit() {
   submit() {
-    const data = this.form.getRawValue();
+    const stdData = this.form.getRawValue();
     const date = this.form.value['birthDate'];
     let dateFormated;
 
     if(date) {
     dateFormated = moment(date).format('YYYY-MM-DD');
-    data.birthDate = dateFormated;
+    stdData.birthDate = dateFormated;
+    this.searchData = stdData;
     }
 
-    this.studServ.findStudent(data)
-      .subscribe(
-        (results: Response) => this.dataS = results['data']['data'],
-        // results => {
-        //   let data: any = results['data'];
-        //   data.forEach(dat => {
-        //     console.log(dat.grade);
-        //   })
-        // console.log(data)
-        // },
-        error => console.log(error)
-      )
-    ;
+    this.compHttp.postRequest('http://127.0.0.1:8000/students/search', stdData);
   }
 
-  showStud(student: userStudData) {
-    this.studServ.showStudent(student);
-  }
+  // showStud(student: userStudData) {
+  //   this.studServ.showStudent(student);
+  // }
 }

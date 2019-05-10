@@ -7,7 +7,7 @@ import { userStudData } from '../../interfaces/app-interface';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-find-students',
+  selector: 'findStudents',
   templateUrl: './find-students.component.html',
   styleUrls: ['./find-students.component.scss']
 })

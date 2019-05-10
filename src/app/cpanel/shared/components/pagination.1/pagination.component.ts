@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PaginationService } from './pagination.service';
+import { PaginationService, dataObj } from './pagination.service';
 
 @Component({
   selector: 'pagination',
@@ -9,9 +9,9 @@ import { PaginationService } from './pagination.service';
 export class PaginationComponent implements OnInit {
 
   @Input('perPage') perPage: number = 4;
-  @Input() data: Response;
-
   perPageCheck: number;
+  @Input() data: Response;
+  // private dataSource;
 
   constructor(private paginServ: PaginationService) { }
 
