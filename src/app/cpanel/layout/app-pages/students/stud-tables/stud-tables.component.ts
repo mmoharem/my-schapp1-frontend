@@ -1,10 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
-import { HttpService } from 'src/app/cpanel/shared/services/http.service';
+import { Component, OnInit } from '@angular/core';
 import 'rxjs/add/operator/map'
-import { userStudData } from 'src/app/cpanel/shared/interfaces/app-interface';
-import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
-import { AppError } from 'src/app/cpanel/shared/classes/app-error';
-import { PaginationService, dataObj } from 'src/app/cpanel/shared/components/pagination/pagination.service';
+import { CompHttpService } from 'src/app/cpanel/shared/components/comp-http.service';
 
 @Component({
   selector: 'stud-tables',
@@ -13,45 +9,28 @@ import { PaginationService, dataObj } from 'src/app/cpanel/shared/components/pag
 })
 export class StudTablesComponent implements OnInit {
 
-  @Input('perPage') perPage = 2;
-  // private data: Response;
-  // private displayedColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
-  // private dataSource: userStudData[];
-  data: Response;
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
-  dataSource: userStudData[];
+  // tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
+  tableColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'mobilePhone', 'address', 'image'];
 
-  constructor(private httpServ: HttpService,
-              private studServ: StudentsService,
-              private paginSer: PaginationService) {
+  tableObj = {
+    tableColumns: this.tableColumns,
+    type: 'userStudent'
+  };
+
+  constructor(private compHttp: CompHttpService) {
 
   }
 
   ngOnInit() {
     this.getStudents();
-    this.paginSer.responseEmit.subscribe(this);
-  }
-
-  next = (obj: dataObj) => {
-    if(obj.results) {
-      this.handelResults(obj.results);
-
-    } else if(obj.error) {
-      this.handelError(obj.error);
-    }
+    console.log(this.tableObj);
   }
 
   getStudents() {
-    this.studServ.getStudents()
-    .subscribe(
-      (results: Response) => this.handelResults(results),
-      (error: Response) => this.handelError(error)
-    );
+    this.compHttp.getRequest('http://127.0.0.1:8000/students');
   }
 
   handelResults(results: Response) {
-    this.dataSource = results['data']['data'];
-    this.data = results['data'];
   }
 
   handelError(error: Response) {

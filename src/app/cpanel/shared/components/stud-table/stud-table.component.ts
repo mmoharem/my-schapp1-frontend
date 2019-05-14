@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { userStudData } from '../../interfaces/app-interface';
 import { HttpClient } from '@angular/common/http';
 import { CompHttpService, compResObj } from '../comp-http.service';
+import { Router } from '@angular/router';
+import { StudTableService } from './stud-table.service';
 
 // export interface tableCol {
 //   id: 'id', name: 'name', gender: 'gender', birthDate: 'birthDate', grade: 'grade',
@@ -15,26 +17,30 @@ import { CompHttpService, compResObj } from '../comp-http.service';
 })
 export class StudTableComponent implements OnInit, OnChanges {
 
-  @Input() tableColInput: string[] = [];
+  @Input() tableObjInp: {type: string,tableColumns:string[]};
 
+  dataType: string;
+  tableColInput: string[] = [];
   dataSInput: userStudData[];
   data: Response;
-  dataS: userStudData[];
+  // dataS: userStudData[];
 
   // tableColumns: string[] = [
   //   'id', 'name', 'gender', 'birthDate', 'grade', 'phoneNumber', 'mobilePhone', 'address', 'fees', 'payment', 'image', 'show', 'edite', 'delete'
   // ];
 
 
-  constructor(private http: HttpClient,
-              private compHttp: CompHttpService) { }
+  constructor(private compHttp: CompHttpService,
+              private stdTableSer: StudTableService,
+              private router: Router) { }
 
   ngOnInit() {
     this.compHttp.emittReq.subscribe(this);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
+    this.dataType = this.tableObjInp.type;
+    this.tableColInput = this.tableObjInp.tableColumns;
   }
 
 
@@ -47,6 +53,10 @@ export class StudTableComponent implements OnInit, OnChanges {
     // else if(resObject.postErr) {
     //   this.handelError(resObject.postErr);
     // }
+    else if(resObject.getRes) {
+      this.handelResults(resObject.getRes);
+      console.log(resObject.getRes);
+    }
   }
 
 
@@ -57,6 +67,11 @@ export class StudTableComponent implements OnInit, OnChanges {
 
   handelError(error) {
     console.log(error);
+  }
+
+  update(student: userStudData) {
+    this.router.navigate(['/students/testupdate', 'id']);
+    this.stdTableSer.onUpdate(student);
   }
 
 }

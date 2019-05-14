@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-
 import * as moment from 'moment/moment';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { userStudData } from '../../interfaces/app-interface';
-import { HttpClient } from '@angular/common/http';
+import { CompHttpService } from '../comp-http.service';
+import { HttpService } from '../../services/http.service';
+import { StudentsService } from '../../services/students.service';
 
 @Component({
   selector: 'findStudents',
@@ -13,15 +12,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FindStudentsComponent implements OnInit {
 
-  // private form: FormGroup;
+  grades;
   form: FormGroup;
-  // private dataSource: userStudData;
-  dataSource: userStudData;
 
-  constructor(private http: HttpClient,
-              private fB: FormBuilder) { }
+  constructor(private studServ: StudentsService,
+              private fB: FormBuilder,
+              private compHttp: CompHttpService) { }
 
   ngOnInit() {
+    this.grades = this.studServ.grades;
     this.initForm();
   }
 
@@ -29,37 +28,21 @@ export class FindStudentsComponent implements OnInit {
     this.form = this.fB.group({
       firstName: [''],
       lastName: '',
-      grade: '',
+      grade_id: '',
       birthDate: ''
     });
   }
 
-  // private submit() {
   submit() {
-    const data = this.form.getRawValue();
+    const formData = this.form.getRawValue();
     const date = this.form.value['birthDate'];
     let dateFormated;
 
     if(date) {
       dateFormated = moment(date).format('YYYY-MM-DD');
-      data.birthDate = dateFormated;
+      formData.birthDate = dateFormated;
     }
 
-    // this.httpServ.postRequest('search', data)
-    this.http.post('http://127.0.0.1:8000/students/search', data)
-      .subscribe(
-        (results: Response) => this.dataSource = results['data']['data'],
-        // results => {
-        //   this.dataS = results['data']['data'];
-        //   let data: any = results['data']['data'];
-        //   data.forEach(dat => {
-        //     console.log(dat.firstName);
-        //   })
-        //   console.log(data)
-        // },
-        (error: Response) => console.log(error)
-      )
-    ;
+    this.compHttp.postRequest('http://127.0.0.1:8000/students/search', formData);
   }
-
 }

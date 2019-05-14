@@ -42,6 +42,18 @@ import { AllPaymentsComponent } from './layout/app-pages/students/payments/all-p
 import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-payment/stud-payment.component';
 import { FindStudComponent } from './layout/app-pages/students/find-stud/find-stud.component';
 import { ComponentsModule } from './shared/components/components.module';
+import { TestUpdateComponent } from './layout/app-pages/students/test-update/test-update.component';
+import { TeachersMainComponent } from './layout/app-pages/teachers/teachers-main/teachers-main.component';
+import { AddTeachComponent } from './layout/app-pages/teachers/teachers-main/add-teach/add-teach.component';
+import { FindTeachComponent } from './layout/app-pages/teachers/teachers-main/find-teach/find-teach.component';
+import { ShowallTeachComponent } from './layout/app-pages/teachers/teachers-main/showall-teach/showall-teach.component';
+import { EmployeeComponent } from './layout/app-pages/employee/employee.component';
+import { EmployeeMainComponent } from './layout/app-pages/employee/employee-main/employee-main.component';
+import { ShowEmployComponent } from './layout/app-pages/employee/employee-main/show-employ/show-employ.component';
+import { AddEmployComponent } from './layout/app-pages/employee/employee-main/add-employ/add-employ.component';
+import { UpdateEmployComponent } from './layout/app-pages/employee/update-employ/update-employ.component';
+import { UpdateTeachComponent } from './layout/app-pages/teachers/update-teach/update-teach.component';
+import { FindEmployComponent } from './layout/app-pages/employee/employee-main/find-employ/find-employ.component';
 // import { PaginationModule } from './shared/components/pagination/pagination.module';
 // import { FindStudentsComponent } from './shared/components/find-students/find-students.component';
 // import { StudTableComponent } from './shared/components/stud-table/stud-table.component';
@@ -99,6 +111,30 @@ import { ComponentsModule } from './shared/components/components.module';
     StudPaymentComponent,
 
     FindStudComponent,
+
+    TestUpdateComponent,
+
+    TeachersMainComponent,
+
+    AddTeachComponent,
+
+    FindTeachComponent,
+
+    ShowallTeachComponent,
+
+    EmployeeComponent,
+
+    EmployeeMainComponent,
+
+    ShowEmployComponent,
+
+    AddEmployComponent,
+
+    UpdateEmployComponent,
+
+    UpdateTeachComponent,
+
+    FindEmployComponent,
 
     // FindStudentsComponent,
 

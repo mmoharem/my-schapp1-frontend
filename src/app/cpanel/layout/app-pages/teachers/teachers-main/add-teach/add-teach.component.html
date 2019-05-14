@@ -1,0 +1,145 @@
+<div class="add-teacher-cont">
+
+  <mat-card-title class="card-title">Add new Student</mat-card-title>
+
+  <!-- Form -->
+  <form name="form" [formGroup]="form" (submit)="submit()">
+    <div class="form-cont">
+      <!-- Form Container -->
+      <div class="flex-row__with-img">
+
+        <div class="flex-row__with-img__col">
+          <!-- First Name -->
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" formControlName="firstName" required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error>First Name Required</mat-error>
+          </mat-form-field>
+
+          <!-- Last Name -->
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" formControlName="lastName" required>
+            <mat-icon matSuffix>account_circle</mat-icon>
+            <mat-error>Last Name Required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <textarea matInput placeholder="Address" formControlName="address" required></textarea>
+            <mat-icon fontSet="fa" fontIcon="fa-map-marker-alt"></mat-icon>
+            <mat-error>Address is Required</mat-error>
+          </mat-form-field>
+          <!-- <button mat-raised-button color="primary">Upload</button> -->
+        </div><!-- -->
+        <div class="flex-row__with-img__upload-cont">
+          <button type="button" class="flex-row__with-img__btn" mat-raised-button color="primary"
+            (click)="fileInput.click()">Upload</button>
+          <!-- <mat-form-field> -->
+          <input hidden type="file" (change)="uploadImg($event)" #fileInput required>
+          <!-- <mat-error>Gender is Required</mat-error> -->
+          <!-- </mat-form-field> -->
+          <img class="flex-row__with-img__img" *ngIf="imgObj" src="{{imgObj.url}}" alt="user-image">
+          <!-- <img class="user-img" src="http://127.0.0.1:8000/images/php3D2A.tmp.jpg" alt="user-image"> -->
+        </div>
+      </div>
+
+      <!-- Gender -->
+      <div class="flex-row flex-row__col-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Select Gender</mat-label>
+          <mat-select formControlName="gender" required>
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+          <mat-error>Gender is Required</mat-error>
+        </mat-form-field>
+
+        <!-- Birth Date -->
+        <mat-form-field appearance="outline">
+          <input matInput [matDatepicker]="picker" placeholder="Birth Date" formControlName="birthDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>Birth Date Required</mat-error>
+        </mat-form-field>
+
+      </div>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Email" formControlName="email" required>
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-error>Email Required</mat-error>
+      </mat-form-field>
+
+      <div class="flex-row flex-row__col-2">
+        <!-- Phone Number -->
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>
+          <mat-icon matSuffix>local_phone</mat-icon>
+          <mat-error>Phone Number Required</mat-error>
+        </mat-form-field>
+
+        <!-- Mobile Number -->
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Mobile Phone" formControlName="mobilePhone" required>
+          <mat-icon matSuffix>phone_iphone</mat-icon>
+          <mat-error>Mobile Number Required</mat-error>
+        </mat-form-field>
+      </div><!-- -->
+
+      <!-- Medical State -->
+      <mat-form-field appearance="outline">
+        <textarea matInput placeholder="Medical State" formControlName="medicalState"></textarea>
+        <mat-error>Medical State Required</mat-error>
+      </mat-form-field>
+
+      <!-- Notes -->
+      <mat-form-field appearance="outline">
+        <mat-label>Add Notes</mat-label>
+        <textarea matInput placeholder="Notes" formControlName="notes"></textarea>
+      </mat-form-field>
+
+      <div class="flex-row flex-row__col-2">
+
+        <!-- Grade -->
+        <mat-form-field appearance="outline">
+          <mat-label>Select Grade</mat-label>
+          <mat-select formControlName="grade_id">
+            <mat-option value="{{grade.id}}" *ngFor="let grade of grades">{{ grade.name }}</mat-option>
+          </mat-select>
+          <mat-error>Grade is Required</mat-error>
+        </mat-form-field>
+
+        <!-- Class -->
+        <mat-form-field appearance="outline">
+          <mat-label>Select Class</mat-label>
+          <mat-select formControlName="class" required>
+            <mat-option value="1-c">Kg-1c</mat-option>
+            <mat-option value="2-c">Kg-2c</mat-option>
+            <mat-option value="4-a">Primary-4a</mat-option>
+            <mat-option value="5-b">Secondary-5b</mat-option>
+          </mat-select>
+          <mat-error>Grade is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="flex-row flex-row__col-2">
+        <!-- Password -->
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Password" formControlName="password" required>
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error>Password Required</mat-error>
+        </mat-form-field>
+
+        <!-- Confirm Password -->
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Confirm Password" formControlName="password_confirmation" required>
+          <mat-icon matSuffix>account_circle</mat-icon>
+          <mat-error>Password Conifirmation Required</mat-error>
+        </mat-form-field>
+      </div><!-- -->
+      <div class="btn-form-submit">
+        <button color="primary" mat-raised-button [disabled]="!form.valid">Submit</button>
+      </div>
+    </div> <!-- End Form Container -->
+  </form>
+</div>

@@ -20,6 +20,18 @@ import { StudTablesComponent } from './cpanel/layout/app-pages/students/stud-tab
 import { AddStudentComponent } from './cpanel/layout/app-pages/students/add-student/add-student.component';
 import { FindStudComponent } from './cpanel/layout/app-pages/students/find-stud/find-stud.component';
 import { TeachersComponent } from './cpanel/layout/app-pages/teachers/teachers.component';
+import { TestUpdateComponent } from './cpanel/layout/app-pages/students/test-update/test-update.component';
+import { TeachersMainComponent } from './cpanel/layout/app-pages/teachers/teachers-main/teachers-main.component';
+import { ShowallTeachComponent } from './cpanel/layout/app-pages/teachers/teachers-main/showall-teach/showall-teach.component';
+import { AddTeachComponent } from './cpanel/layout/app-pages/teachers/teachers-main/add-teach/add-teach.component';
+import { UpdateTeachComponent } from './cpanel/layout/app-pages/teachers/update-teach/update-teach.component';
+import { EmployeeComponent } from './cpanel/layout/app-pages/employee/employee.component';
+import { EmployeeMainComponent } from './cpanel/layout/app-pages/employee/employee-main/employee-main.component';
+import { ShowEmployComponent } from './cpanel/layout/app-pages/employee/employee-main/show-employ/show-employ.component';
+import { AddEmployComponent } from './cpanel/layout/app-pages/employee/employee-main/add-employ/add-employ.component';
+import { UpdateEmployComponent } from './cpanel/layout/app-pages/employee/update-employ/update-employ.component';
+import { FindEmployComponent } from './cpanel/layout/app-pages/employee/employee-main/find-employ/find-employ.component';
+import { FindTeachComponent } from './cpanel/layout/app-pages/teachers/teachers-main/find-teach/find-teach.component';
 
 const routes: Routes = [
   {
@@ -67,6 +79,7 @@ const routes: Routes = [
               {path: 'showall', component: StudTablesComponent},
               {path: 'addstudent', component: AddStudentComponent},
               {path: 'findstudent', component: FindStudComponent},
+              {path: 'testupdate/:student', component: TestUpdateComponent}
             ]
           },
 
@@ -81,7 +94,35 @@ const routes: Routes = [
         component: TeachersComponent,
         children:
         [
+          {
+            path: '',
+            component: TeachersMainComponent,
+            children: [
+              {path: 'showteachers', component: ShowallTeachComponent},
+              {path: 'addteacher', component: AddTeachComponent},
+              {path: 'findteacher', component: FindTeachComponent},
+              {path: 'updateteacher', component: UpdateTeachComponent}
+            ]
+          },
+        ]
+      },
 
+      //Teachers
+      {
+        path: 'employee',
+        component: EmployeeComponent,
+        children:
+        [
+          {
+            path: '',
+            component: EmployeeMainComponent,
+            children: [
+              {path: 'showemployee', component: ShowEmployComponent},
+              {path: 'addemployee', component: AddEmployComponent},
+              {path: 'findemployee', component: FindEmployComponent},
+              {path: 'updateemployee', component: UpdateEmployComponent}
+            ]
+          },
         ]
       },
 

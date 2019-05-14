@@ -7,6 +7,8 @@ import { MaterialModule } from 'src/app/material.module';
 import { PaginationService } from './pagination/pagination.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CompHttpService } from './comp-http.service';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { StudTableService } from './stud-table/stud-table.service';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { CompHttpService } from './comp-http.service';
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
   ],
   providers: [
     CompHttpService,
-    PaginationService
+    PaginationService,
+    StudTableService
   ],
   exports: [
     PaginationComponent,

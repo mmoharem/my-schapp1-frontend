@@ -41,6 +41,7 @@ export interface userStudData {
   firstName: string,
   lastName: string,
   address: string,
+  gender: string,
   birthDate: string,
   phoneNumber: number,
   mobilePhone: number,
@@ -54,13 +55,14 @@ export interface userStudData {
     {
       filename: string
     }
-  ]
+  ],
 
   student: {
     id: number,
     class: string,
 
     grade: {
+      id: number,
       name: string,
       level: string,
 
@@ -73,6 +75,55 @@ export interface userStudData {
         totFees: number
       }
     }
+  },
+
+  employee: {
+    id: number,
+    profession: string,
+    insurance_state: number,
+    reg_date: string,
+    experience: string,
+    user_id: number,
+    salary_id: number,
+    created_at: string,
+    updated_at: string,
+  }
+}
+
+
+export interface userEmployData {
+  id: number,
+  firstName: string,
+  lastName: string,
+  address: string,
+  gender: string,
+  birthDate: string,
+  phoneNumber: number,
+  mobilePhone: number,
+  email: string,
+  medicalState: string,
+  notes: string,
+  created_at: string,
+  updated_at: string,
+
+  images: [
+    {
+      filename: string,
+      created_at: string,
+      updated_at: string,
+    }
+  ]
+
+  employee: {
+    id: number,
+    profession: string,
+    insurance_state: number,
+    reg_date: string,
+    experience: string,
+    user_id: number,
+    salary_id: number,
+    created_at: string,
+    updated_at: string,
   }
 }
 

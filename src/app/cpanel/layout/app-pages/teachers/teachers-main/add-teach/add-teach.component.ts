@@ -1,23 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment/moment';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/cpanel/shared/services/http.service';
-import { TokenService } from 'src/app/cpanel/shared/services/token.service';
-import { Router } from '@angular/router';
-import * as moment from 'moment/moment';
-import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.service';
 import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
-import { ToastrService } from "ngx-toastr";
-import { AppError, BadInput, NotFoundError } from 'src/app/cpanel/shared/classes/app-error';
+import { TokenService } from 'src/app/cpanel/shared/services/token.service';
+import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'students-add-student',
-  templateUrl: './add-student.component.html',
-  styleUrls: ['./add-student.component.scss']
+  selector: 'app-add-teach',
+  templateUrl: './add-teach.component.html',
+  styleUrls: ['./add-teach.component.scss']
 })
-export class AddStudentComponent implements OnInit {
-
-  grades = [];
-  // private imgObj;
+export class AddTeachComponent implements OnInit {
   imgObj;
   form: FormGroup;
   error = [];
@@ -28,11 +24,9 @@ export class AddStudentComponent implements OnInit {
               private tokenServ: TokenService,
               private imgUpldServ: ImgUploadService,
               private router: Router,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.httpServ.getGrades();
-    this.httpServ.emitGrade.subscribe((grades: any) => this.grades = grades);
     this.imgUpldServ.emitImgObj.subscribe(imgObj => this.imgObj = imgObj);
     this.buildForm();
   }
@@ -72,7 +66,7 @@ export class AddStudentComponent implements OnInit {
     const dateFormat = moment(date).format('YYYY-MM-DD');
     data.birthDate = dateFormat;
 
-    if(this.imgObj) {
+    if (this.imgObj) {
       data.image_id = this.imgObj.id;
 
     } else {
@@ -84,24 +78,11 @@ export class AddStudentComponent implements OnInit {
     this.studServ.createStudent(data)
       .subscribe(
         (results: Response) => console.log(results),
-        // (error: AppError) => {
-        //   if(error instanceof BadInput) {
-        //     console.log(error.originalError)
-
-        //   } else if(error instanceof NotFoundError) {
-        //     alert('This page or url are not Found');
-
-        //   } else {
-        //     alert('An unexpected error occurred.');
-        //     console.log(error);
-        //   }
-        // }
         (error: any) => {
           this.toastr.error(error.error.message)
           console.log(error);
         }
-      )
-    ;
+      );
   }
 
   handleError(error) {
@@ -114,5 +95,4 @@ export class AddStudentComponent implements OnInit {
     this.router.navigate(['/secure']);
     this.httpServ.isLoggedIn();
   }
-
 }

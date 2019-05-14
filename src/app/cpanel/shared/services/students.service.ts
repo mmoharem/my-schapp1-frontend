@@ -14,8 +14,11 @@ export class StudentsService {
 
   baseUrl = 'http://localhost:8000';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getGrades();
+  }
 
+  grades = [];
   emitStudent = new Subject();
 
   showStudent(student: userStudData) {
@@ -59,5 +62,14 @@ export class StudentsService {
 
   deleteStudent() {
 
+  }
+
+  getGrades() {
+    this.http.get(`${this.baseUrl}/school/grade`)
+      .subscribe(
+        (results: any) => this.grades = results,
+        error => console.log(error),
+      )
+    ;
   }
 }

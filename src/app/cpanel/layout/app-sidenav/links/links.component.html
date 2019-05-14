@@ -31,7 +31,9 @@
         <span class="pages-links__link--text">Students</span>
         <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
       </a>
+
       <div class="collapsed-menu" style="display:none;">
+        <!-- Students Main Comp (Show All Students) -->
         <a routerLink="/students/showall" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-hand-holding-usd">
           </mat-icon>
@@ -39,6 +41,7 @@
           </mat-icon> -->
           <span class="pages-links__link--text pages-links__link--text__child">Students</span>
         </a>
+        <!-- Students Payments -->
         <a routerLink="/students/payments" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-hand-holding-usd">
           </mat-icon>
@@ -46,6 +49,7 @@
           </mat-icon> -->
           <span class="pages-links__link--text pages-links__link--text__child">Payments</span>
         </a>
+        <!-- Students Update -->
         <a routerLink="/students/update" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" fontSet="fa" fontIcon="fa-edit">
           </mat-icon>
@@ -53,34 +57,42 @@
         </a>
       </div>
     </li>
-    <li class="pages-links__item"><!-- Teachers -->
-      <a class="pages-links__link" onClick toggle=true>
-        <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">account_balance</mat-icon>
-        <span class="pages-links__link--text">Teachers</span>
-        <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
-      </a>
-      <div class="collapsed-menu" style="display:none;">
-        <a routerLink="/teachers" class="pages-links__link pages-links__link--child">
-          <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
-          </mat-icon>
-          <span class="pages-links__link--text pages-links__link--text__child">Teachers</span>
-        </a>
-      </div>
-    </li>
+    <!------------------------------------------------------------ Employee ---------------------------------------------->
     <li class="pages-links__item"><!-- Employee -->
       <a class="pages-links__link" onClick toggle=true>
         <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">account_balance</mat-icon>
         <span class="pages-links__link--text">Employee</span>
         <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
       </a>
+
       <div class="collapsed-menu" style="display:none;">
-        <a routerLink="/teachers" class="pages-links__link pages-links__link--child">
+        <!-- Employee Main Comp (Show All) -->
+        <a routerLink="/employee/showemployee" class="pages-links__link pages-links__link--child">
           <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
           </mat-icon>
           <span class="pages-links__link--text pages-links__link--text__child">Employee</span>
         </a>
       </div>
     </li>
+    <!--------------------------------------------------------- Teachers ------------------------------------------>
+    <li class="pages-links__item"><!-- Teachers -->
+      <a class="pages-links__link" onClick toggle=true>
+        <mat-icon class="pages-links__link--icon" role="img" aria-hidden="true">account_balance</mat-icon>
+        <span class="pages-links__link--text">Teachers</span>
+        <mat-icon id="toggleArrow" class="collapsable-arrow" role="img" aria-hidden="true">keyboard_arrow_right</mat-icon>
+      </a>
+
+      <div class="collapsed-menu" style="display:none;">
+        <!-- Teachers Main Comp (Show All) -->
+        <a routerLink="/teachers/showteachers" class="pages-links__link pages-links__link--child">
+          <mat-icon class="pages-links__link--icon pages-links__link--icon__child" role="img" aria-hidden="true">today
+          </mat-icon>
+          <span class="pages-links__link--text pages-links__link--text__child">Teachers</span>
+        </a>
+      </div>
+    </li>
+
+    <!---------------------------------------- Test -->
     <li class="pages-links__item">
       <a routerLink="/test" class="pages-links__link">
         <!-- test -->
