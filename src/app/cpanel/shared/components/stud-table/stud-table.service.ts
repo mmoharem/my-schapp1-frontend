@@ -9,11 +9,11 @@ export class StudTableService {
 
   constructor() { }
 
-  student: userStudData;
+  user: userStudData;
   emittStud = new Subject;
 
-  onUpdate(student: userStudData) {
-    this.student = student;
+  onUpdate(user: userStudData) {
+    this.user = user;
     // this.emittStud.next(student);
   }
 

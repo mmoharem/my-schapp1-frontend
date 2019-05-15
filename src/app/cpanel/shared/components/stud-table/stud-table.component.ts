@@ -67,8 +67,21 @@ export class StudTableComponent implements OnInit, OnChanges {
   }
 
   update(student: userStudData) {
-    this.router.navigate(['/students/testupdate', 'id']);
-    this.stdTableSer.onUpdate(student);
+    if(this.tableObjInp.type === 'student') {
+      this.router.navigate(['/students/testupdate', 'id']);
+      this.stdTableSer.onUpdate(student);
+    } else
+
+    if(this.tableObjInp.type === 'employee') {
+      this.router.navigate(['/students/update', 'id']);
+      this.stdTableSer.onUpdate(student);
+    } else
+
+    if(this.tableObjInp.type === 'teacher') {
+      this.router.navigate(['/students/update', 'id']);
+      this.stdTableSer.onUpdate(student);
+    };
+
   }
 
 }
