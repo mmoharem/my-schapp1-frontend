@@ -10,6 +10,10 @@ export class FindStudComponent implements OnInit {
   tableColumns: string[] = [
     'id', 'name', 'address', 'gender', 'birthDate', 'grade', 'fees', 'payment', 'image', 'show', 'edite', 'delete'
   ];
+  tableObj = {
+    tableColumns: this.tableColumns,
+    type: 'student'
+  };
 
 
   constructor() { }

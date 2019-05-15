@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as moment from 'moment/moment';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CompHttpService } from '../comp-http.service';
-import { HttpService } from '../../services/http.service';
 import { StudentsService } from '../../services/students.service';
 
 @Component({
@@ -12,6 +11,7 @@ import { StudentsService } from '../../services/students.service';
 })
 export class FindStudentsComponent implements OnInit {
 
+  @Input() dataTypeInp: string;
   grades;
   form: FormGroup;
 
@@ -38,11 +38,18 @@ export class FindStudentsComponent implements OnInit {
     const date = this.form.value['birthDate'];
     let dateFormated;
 
+    console.log(formData);
     if(date) {
       dateFormated = moment(date).format('YYYY-MM-DD');
       formData.birthDate = dateFormated;
     }
 
-    this.compHttp.postRequest('http://127.0.0.1:8000/students/search', formData);
+    if(this.dataTypeInp === 'student') {
+      this.compHttp.searchRequest('http://127.0.0.1:8000/students/search', formData);
+    } else
+
+    if(this.dataTypeInp === 'employee') {
+      this.compHttp.searchRequest('http://127.0.0.1:8000/employee/search', formData);
+    }
   }
 }

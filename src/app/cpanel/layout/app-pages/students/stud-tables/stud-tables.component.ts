@@ -14,7 +14,7 @@ export class StudTablesComponent implements OnInit {
 
   tableObj = {
     tableColumns: this.tableColumns,
-    type: 'userStudent'
+    type: 'student'
   };
 
   constructor(private compHttp: CompHttpService) {
@@ -23,7 +23,6 @@ export class StudTablesComponent implements OnInit {
 
   ngOnInit() {
     this.getStudents();
-    console.log(this.tableObj);
   }
 
   getStudents() {

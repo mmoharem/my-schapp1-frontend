@@ -11,7 +11,7 @@ export class ShowEmployComponent implements OnInit {
   tableColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'mobilePhone', 'address', 'image'];
   tableObj = {
     tableColumns: this.tableColumns,
-    type: 'userEmployee'
+    type: 'employee'
   };
 
   constructor(private compHttp: CompHttpService) { }

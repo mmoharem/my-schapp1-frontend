@@ -9,12 +9,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CompHttpService } from './comp-http.service';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { StudTableService } from './stud-table/stud-table.service';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
     PaginationComponent,
     StudTableComponent,
-    FindStudentsComponent
+    FindStudentsComponent,
+    RegisterFormComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { StudTableService } from './stud-table/stud-table.service';
   exports: [
     PaginationComponent,
     StudTableComponent,
-    FindStudentsComponent
+    FindStudentsComponent,
+    RegisterFormComponent
   ],
 })
 export class ComponentsModule { }

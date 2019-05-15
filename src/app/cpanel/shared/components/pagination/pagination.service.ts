@@ -33,7 +33,7 @@ export class PaginationService {
     }
 
     if(path.includes('search')) {
-      this.compHttp.postRequest(url);
+      this.compHttp.searchRequest(url);
       return;
     }
 

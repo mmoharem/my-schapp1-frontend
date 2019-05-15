@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { userStudData } from '../../interfaces/app-interface';
-import { HttpClient } from '@angular/common/http';
 import { CompHttpService, compResObj } from '../comp-http.service';
 import { Router } from '@angular/router';
 import { StudTableService } from './stud-table.service';
@@ -46,16 +45,14 @@ export class StudTableComponent implements OnInit, OnChanges {
 
 
   next = (resObject: compResObj) => {
-    if(resObject.postRes) {
-      this.handelResults(resObject.postRes);
-
+    if(resObject.searchRes) {
+      this.handelResults(resObject.searchRes);
     }
     // else if(resObject.postErr) {
     //   this.handelError(resObject.postErr);
     // }
     else if(resObject.getRes) {
       this.handelResults(resObject.getRes);
-      console.log(resObject.getRes);
     }
   }
 

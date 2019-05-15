@@ -5,8 +5,13 @@ import { Subject } from 'rxjs';
 export interface compResObj {
   getRes: Response,
   getErr: Response,
+
   postRes: Response,
-  postErr: Response
+  postErr: Response,
+
+  searchRes: Response,
+  searchErr: Response
+
 }
 
 @Injectable({
@@ -21,33 +26,31 @@ export class CompHttpService {
   baseUrl = 'http://127.0.0.1:8000/';
   searchData;
 
+  // Get Request
   getRequest(url) {
-    this.http.get(url).subscribe
-      (
-        (results: Response) => {
-          this.emittReq.next(<compResObj>{getRes: results});
-        },
-        (error: Response) => {
-          this.emittReq.next(<compResObj>{getErr: error});
-        }
-      )
-    ;
+    this.http.get(url).subscribe(
+      (results: Response) => { this.emittReq.next(<compResObj>{getRes: results}); },
+      (error: Response) => { this.emittReq.next(<compResObj>{getErr: error}); }
+    );
   }
 
-  postRequest(url, data?) {
+  // Post Request
+  postRequest(url, data) {
+    this.http.post(`${this.baseUrl}${url}`, data).subscribe(
+      (results: Response) => { this.emittReq.next(<compResObj>{postRes: results}); },
+      (error: Response) => { this.emittReq.next(<compResObj>{postErr: error}); }
+    );
+  }
+
+  // Search Request
+  searchRequest(url, data?) {
 
     if(data) this.searchData = data;
 
-    this.http.post(url, this.searchData).subscribe
-      (
-        (results: Response) => {
-          this.emittReq.next(<compResObj>{postRes: results});
-        },
-        (error: Response) => {
-          this.emittReq.next(<compResObj>{postErr: error});
-        }
-      )
-    ;
+    this.http.post(url, this.searchData).subscribe (
+      (results: Response) => { this.emittReq.next(<compResObj>{searchRes: results}); },
+      (error: Response) => { this.emittReq.next(<compResObj>{searchErr: error}); }
+    );
   }
 
   emittReqFn(response: Response) {

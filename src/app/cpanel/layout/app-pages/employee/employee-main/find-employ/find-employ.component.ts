@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FindEmployComponent implements OnInit {
 
+  tableColumns: string[] = [
+    'id', 'name', 'address', 'gender', 'birthDate', 'image', 'show', 'edite', 'delete'
+  ];
+  tableObj = {
+    tableColumns: this.tableColumns,
+    type: 'employee'
+  };
+
   constructor() { }
 
   ngOnInit() {

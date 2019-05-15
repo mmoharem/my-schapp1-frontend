@@ -8,10 +8,10 @@
       <!-- Student ID. -->
       <ng-container matColumnDef="id" *ngIf="tableColInput.includes('id')">
         <th mat-header-cell *matHeaderCellDef> ID. </th>
-        <div *ngIf="dataType==='userStudent'">
+        <div *ngIf="dataType==='student'">
           <td mat-cell *matCellDef="let element">{{element.student.id}}</td>
         </div>
-        <div *ngIf="dataType==='userEmployee'">
+        <div *ngIf="dataType==='employee'">
           <td mat-cell *matCellDef="let element">{{element.employee.id}}</td>
         </div>
 
@@ -114,7 +114,7 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
           <!-- <mat-icon>more_vert</mat-icon> -->
-          <button class="app-table__btn" color="warn" mat-raised-button (click)="showStud(element)" [routerLink]="['/students/testupdate', element.firstName]">Del</button>
+          <!-- <button class="app-table__btn" color="warn" mat-raised-button (click)="showStud(element)" [routerLink]="['/students/testupdate', element.firstName]">Del</button> -->
         </td>
       </ng-container>
 

@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment/moment';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/cpanel/shared/services/http.service';
-import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
 import { TokenService } from 'src/app/cpanel/shared/services/token.service';
-import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CompHttpService } from 'src/app/cpanel/shared/components/comp-http.service';
 
 @Component({
   selector: 'app-add-employ',
@@ -16,84 +13,20 @@ import { ToastrService } from 'ngx-toastr';
 
 export class AddEmployComponent implements OnInit {
 
-  dataType: string = 'employee';
-  imgObj;
-  form: FormGroup;
+  dataObj = {
+    dataType: 'employee',
+    url: 'employee'
+  }
   error = [];
 
-  constructor(private formBuild: FormBuilder,
-              private httpServ: HttpService,
-              private studServ: StudentsService,
+  constructor(private httpServ: HttpService,
+              private compHttp: CompHttpService,
               private tokenServ: TokenService,
-              private imgUpldServ: ImgUploadService,
               private router: Router,
-              private toastr: ToastrService) {}
+              private toastr: ToastrService) { }
+
 
   ngOnInit() {
-    this.imgUpldServ.emitImgObj.subscribe(imgObj => this.imgObj = imgObj);
-    this.buildForm();
-  }
-
-  private buildForm() {
-
-    if(this.dataType === 'employee') {
-      empolee : this.formBuild.group({
-        profession: ['', Validators.required],
-        insurance_state: ['', Validators.required],
-        reg_date: ['', Validators.required],
-        experience: ['', Validators.required]
-      });
-    }
-
-    this.form = this.formBuild.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      image: [''],
-      address: ['', Validators.required],
-      gender: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
-      mobilePhone: ['', Validators.required],
-      medicalState: [''],
-      notes: [''],
-      password: ['', Validators.required],
-      password_confirmation: ['', Validators.required],
-    });
-  }
-
-  // private uploadImg(e) {
-  uploadImg(e) {
-    const image = e.target.files[0];
-
-    this.imgUpldServ.uploadImg(e.target.files[0]);
-  }
-
-  // private submit() {
-  submit() {
-    const data = this.form.getRawValue();
-    const date = this.form.value['birthDate'];
-
-    const dateFormat = moment(date).format('YYYY-MM-DD');
-    data.birthDate = dateFormat;
-
-    if (this.imgObj) {
-      data.image_id = this.imgObj.id;
-
-    } else {
-      this.toastr.error('Error: User Image Require')
-    }
-
-    console.log(data);
-
-    this.studServ.createStudent(data)
-      .subscribe(
-        (results: Response) => console.log(results),
-        (error: any) => {
-          this.toastr.error(error.error.message)
-          console.log(error);
-        }
-      );
   }
 
   handleError(error) {

@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/cpanel/shared/services/http.service';
 import { TokenService } from 'src/app/cpanel/shared/services/token.service';
 import { Router } from '@angular/router';
-import * as moment from 'moment/moment';
-import { ImgUploadService } from 'src/app/cpanel/shared/services/img-upload.service';
-import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
 import { ToastrService } from "ngx-toastr";
-import { AppError, BadInput, NotFoundError } from 'src/app/cpanel/shared/classes/app-error';
+import { CompHttpService, compResObj } from 'src/app/cpanel/shared/components/comp-http.service';
 
 @Component({
   selector: 'students-add-student',
@@ -16,92 +12,26 @@ import { AppError, BadInput, NotFoundError } from 'src/app/cpanel/shared/classes
 })
 export class AddStudentComponent implements OnInit {
 
-  grades = [];
-  // private imgObj;
-  imgObj;
-  form: FormGroup;
+  dataObj = {
+    dataType: 'student',
+    url: 'students'
+  }
   error = [];
 
-  constructor(private formBuild: FormBuilder,
-              private httpServ: HttpService,
-              private studServ: StudentsService,
+  constructor(private httpServ: HttpService,
+              private compHttp: CompHttpService,
               private tokenServ: TokenService,
-              private imgUpldServ: ImgUploadService,
               private router: Router,
               private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.httpServ.getGrades();
-    this.httpServ.emitGrade.subscribe((grades: any) => this.grades = grades);
-    this.imgUpldServ.emitImgObj.subscribe(imgObj => this.imgObj = imgObj);
-    this.buildForm();
+    this.compHttp.emittReq.subscribe(this.next);
   }
 
-  private buildForm() {
-    this.form = this.formBuild.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      image: [''],
-      address: ['', Validators.required],
-      gender: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
-      mobilePhone: ['', Validators.required],
-      medicalState: [''],
-      notes: [''],
-      grade_id: [''],
-      class: ['', Validators.required],
-      password: ['', Validators.required],
-      password_confirmation: ['', Validators.required]
-    });
-  }
-
-  // private uploadImg(e) {
-  uploadImg(e) {
-    const image = e.target.files[0];
-
-    this.imgUpldServ.uploadImg(e.target.files[0]);
-  }
-
-  // private submit() {
-  submit() {
-    const data = this.form.getRawValue();
-    const date = this.form.value['birthDate'];
-
-    const dateFormat = moment(date).format('YYYY-MM-DD');
-    data.birthDate = dateFormat;
-
-    if(this.imgObj) {
-      data.image_id = this.imgObj.id;
-
-    } else {
-      this.toastr.error('Error: User Image Require')
+  next = (resObject: compResObj) => {
+    if(resObject.postRes) {
+      this.handleResponse(resObject.postRes);
     }
-
-    console.log(data);
-
-    this.studServ.createStudent(data)
-      .subscribe(
-        (results: Response) => console.log(results),
-        // (error: AppError) => {
-        //   if(error instanceof BadInput) {
-        //     console.log(error.originalError)
-
-        //   } else if(error instanceof NotFoundError) {
-        //     alert('This page or url are not Found');
-
-        //   } else {
-        //     alert('An unexpected error occurred.');
-        //     console.log(error);
-        //   }
-        // }
-        (error: any) => {
-          this.toastr.error(error.error.message)
-          console.log(error);
-        }
-      )
-    ;
   }
 
   handleError(error) {
@@ -109,10 +39,10 @@ export class AddStudentComponent implements OnInit {
   }
 
   handleResponse(result) {
-    console.log(result);
     this.tokenServ.setTokrn(result.access_token);
     this.router.navigate(['/secure']);
     this.httpServ.isLoggedIn();
+    console.log(result)
   }
 
 }
