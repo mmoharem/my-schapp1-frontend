@@ -54,6 +54,9 @@ import { AddEmployComponent } from './layout/app-pages/employee/employee-main/ad
 import { UpdateEmployComponent } from './layout/app-pages/employee/update-employ/update-employ.component';
 import { UpdateTeachComponent } from './layout/app-pages/teachers/update-teach/update-teach.component';
 import { FindEmployComponent } from './layout/app-pages/employee/employee-main/find-employ/find-employ.component';
+import { Calendar1TestComponent } from './layout/app-pages/test/calendar1-test/calendar1-test.component';
+import { Calendar2TestComponent } from './layout/app-pages/test/calendar2-test/calendar2-test.component';
+import { StudAttendComponent } from './layout/app-pages/students/stud-attend/stud-attend.component';
 // import { PaginationModule } from './shared/components/pagination/pagination.module';
 // import { FindStudentsComponent } from './shared/components/find-students/find-students.component';
 // import { StudTableComponent } from './shared/components/stud-table/stud-table.component';
@@ -135,6 +138,12 @@ import { FindEmployComponent } from './layout/app-pages/employee/employee-main/f
     UpdateTeachComponent,
 
     FindEmployComponent,
+
+    Calendar1TestComponent,
+
+    Calendar2TestComponent,
+
+    StudAttendComponent,
 
     // FindStudentsComponent,
 

@@ -30,7 +30,9 @@
             "styles": [
               "src/sass/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/gsap/src/minified/TweenMax.min.js"
+            ]
           },
           "configurations": {
             "production": {

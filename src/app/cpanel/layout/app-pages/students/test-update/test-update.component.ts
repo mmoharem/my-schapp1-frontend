@@ -33,9 +33,9 @@ export class TestUpdateComponent implements OnInit {
     this.imgUpSer.emitImgObj.subscribe(imgObj => this.imgObj = imgObj);
 
     this.route.paramMap.subscribe(params => {
-      if(this.stdTableSer.student) {
+      if(this.stdTableSer.user) {
         this.grades = this.studServ.grades;
-        this.student = this.stdTableSer.student;
+        this.student = this.stdTableSer.user;
         this.initForm();
         console.log(this.student.student.grade.id);
       }
