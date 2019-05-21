@@ -16,9 +16,9 @@ import { UpdateStudentComponent } from './cpanel/layout/app-pages/students/updat
 import { PdfPrintComponent } from './cpanel/pdf-print/pdf-print.component';
 import { PrintStudentsAllComponent } from './cpanel/pdf-print/print-students-all/print-students-all.component';
 import { StudMainComponent } from './cpanel/layout/app-pages/students/stud-main/stud-main.component';
-import { StudTablesComponent } from './cpanel/layout/app-pages/students/stud-tables/stud-tables.component';
-import { AddStudentComponent } from './cpanel/layout/app-pages/students/add-student/add-student.component';
-import { FindStudComponent } from './cpanel/layout/app-pages/students/find-stud/find-stud.component';
+import { StudTablesComponent } from './cpanel/layout/app-pages/students/stud-main/stud-tables/stud-tables.component';
+import { AddStudentComponent } from './cpanel/layout/app-pages/students/stud-main/add-student/add-student.component';
+import { FindStudComponent } from './cpanel/layout/app-pages/students/stud-main/find-stud/find-stud.component';
 import { TeachersComponent } from './cpanel/layout/app-pages/teachers/teachers.component';
 import { TestUpdateComponent } from './cpanel/layout/app-pages/students/test-update/test-update.component';
 import { TeachersMainComponent } from './cpanel/layout/app-pages/teachers/teachers-main/teachers-main.component';

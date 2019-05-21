@@ -13,7 +13,7 @@ import { SidenavHeaderComponent } from './layout/app-sidenav/sidenav-header/side
 import { AppTopnavComponent } from './layout/app-topnav/app-topnav.component';
 import { LinksComponent } from './layout/app-sidenav/links/links.component';
 import { StudentsComponent } from './layout/app-pages/students/students.component';
-import { StudTablesComponent } from './layout/app-pages/students/stud-tables/stud-tables.component';
+import { StudTablesComponent } from './layout/app-pages/students/stud-main/stud-tables/stud-tables.component';
 import { TestComponent } from './layout/app-pages/test/test.component';
 import { TeachersComponent } from './layout/app-pages/teachers/teachers.component';
 import { TeachSignupComponent } from './layout/app-pages/teachers/teach-signup/teach-signup.component';
@@ -32,7 +32,7 @@ import { AddFeesComponent } from './layout/app-pages/school/fees/add-fees/add-fe
 import { ShowFeesComponent } from './layout/app-pages/school/fees/show-fees/show-fees.component';
 import { PaymentsComponent } from './layout/app-pages/students/payments/payments.component';
 import { AddPaymentComponent } from './layout/app-pages/students/payments/stud-payment/add-payment/add-payment.component';
-import { AddStudentComponent } from './layout/app-pages/students/add-student/add-student.component';
+import { AddStudentComponent } from './layout/app-pages/students/stud-main/add-student/add-student.component';
 import { UpdateStudentComponent } from './layout/app-pages/students/update-student/update-student.component';
 import { PdfPrintComponent } from './pdf-print/pdf-print.component';
 import { PrintStudentsAllComponent } from './pdf-print/print-students-all/print-students-all.component';
@@ -40,7 +40,7 @@ import { StudMainComponent } from './layout/app-pages/students/stud-main/stud-ma
 import { PaymMainComponent } from './layout/app-pages/students/payments/paym-main/paym-main.component';
 import { AllPaymentsComponent } from './layout/app-pages/students/payments/all-payments/all-payments.component';
 import { StudPaymentComponent } from './layout/app-pages/students/payments/stud-payment/stud-payment.component';
-import { FindStudComponent } from './layout/app-pages/students/find-stud/find-stud.component';
+import { FindStudComponent } from './layout/app-pages/students/stud-main/find-stud/find-stud.component';
 import { ComponentsModule } from './shared/components/components.module';
 import { TestUpdateComponent } from './layout/app-pages/students/test-update/test-update.component';
 import { TeachersMainComponent } from './layout/app-pages/teachers/teachers-main/teachers-main.component';
