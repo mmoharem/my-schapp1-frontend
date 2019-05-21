@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, AfterViewInit } from '@angular/core';
 import { FullCalendarComponent } from '@fullcalendar/angular';
 import { EventInput, Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -11,20 +11,37 @@ import interactionPlugin from '@fullcalendar/interaction'; // for dateClick
   templateUrl: './calendar2-test.component.html',
   styleUrls: ['./calendar2-test.component.scss']
 })
-export class Calendar2TestComponent implements OnInit {
+export class Calendar2TestComponent implements OnInit, AfterViewInit {
 
+  @Input() dataInp: EventInput[];
   @ViewChild('calendar') calendarComponent: FullCalendarComponent; // the #calendar in the template
 
   calendarVisible = true;
   calendarPlugins = [dayGridPlugin, timeGrigPlugin, interactionPlugin, ListPlugin];
+  eventColor;
   calendarWeekends = true;
-  calendarEvents: EventInput[] = [
-    { title: 'Event Now', start: new Date() }
-  ];
+  // calendarEvents: EventInput[] = [
+  //   { title: 'Event Now', start: new Date() }
+  // ];
+  // calendarEvents: EventInput[] = [
+  //   {title: "Absent", date: "2019-05-08"},
+  //   {title: "Present", date: "2019-05-09"},
+  //   {title: "Present", date: "2019-05-10"},
+  //   {title: "Present", date: "2019-05-14"},
+  //   {title: "Absent", date: "2019-05-15"},
+  // ];
+  calendarEvents: EventInput[];
 
   constructor() { }
 
   ngOnInit() {
+    this.calendarEvents = this.dataInp;
+    this.calendarEvents.forEach(event => {
+    });
+  }
+
+  ngAfterViewInit() {
+
   }
 
   toggleVisible() {

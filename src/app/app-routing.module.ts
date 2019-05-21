@@ -32,6 +32,7 @@ import { AddEmployComponent } from './cpanel/layout/app-pages/employee/employee-
 import { UpdateEmployComponent } from './cpanel/layout/app-pages/employee/update-employ/update-employ.component';
 import { FindEmployComponent } from './cpanel/layout/app-pages/employee/employee-main/find-employ/find-employ.component';
 import { FindTeachComponent } from './cpanel/layout/app-pages/teachers/teachers-main/find-teach/find-teach.component';
+import { StudAttendComponent } from './cpanel/layout/app-pages/students/stud-attend/stud-attend.component';
 
 const routes: Routes = [
   {
@@ -79,7 +80,8 @@ const routes: Routes = [
               {path: 'showall', component: StudTablesComponent},
               {path: 'addstudent', component: AddStudentComponent},
               {path: 'findstudent', component: FindStudComponent},
-              {path: 'testupdate/:student', component: TestUpdateComponent}
+              {path: 'testupdate/:student', component: TestUpdateComponent},
+              {path: 'studattendance/:student', component: StudAttendComponent}
             ]
           },
 

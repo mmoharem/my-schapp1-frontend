@@ -37,7 +37,7 @@ export class TestUpdateComponent implements OnInit {
         this.grades = this.studServ.grades;
         this.student = this.stdTableSer.user;
         this.initForm();
-        console.log(this.student.student.grade.id);
+        // console.log(this.student.student.grade.id);
       }
     });
 

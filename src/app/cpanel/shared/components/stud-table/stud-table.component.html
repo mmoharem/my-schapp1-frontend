@@ -91,6 +91,15 @@
       </ng-container>
 
       <!-- Show Btn -->
+      <ng-container matColumnDef="attend" *ngIf="tableColInput.includes('attend')">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <!-- <mat-icon>more_vert</mat-icon> -->
+          <button class="app-table__btn" color="primary" mat-raised-button (click)="studAttend(element)">Attend</button>
+        </td>
+      </ng-container>
+
+      <!-- Show Btn -->
       <ng-container matColumnDef="show" *ngIf="tableColInput.includes('show')">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let element">
