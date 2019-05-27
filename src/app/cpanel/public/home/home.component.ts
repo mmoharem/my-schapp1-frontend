@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgRedux, select } from "@angular-redux/store";
+import { IAppState } from '../../shared/store/store';
+import { INCREMENT } from '../../shared/store/actions';
+import { Map } from "immutable";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  // @select() counter: number;
+  // @select(['messaging', 'newMessages']) newMessages: number;
+  // @select((state: IAppState) => state.messaging.newMessages) newMessages2: number;
+  @select(s => s.get('counter')) counter: number; //state.get('counter')
 
-  ngOnInit() {
+  constructor(private ngRedux: NgRedux<Map<string, any>>) {
+
   }
 
+  ngOnInit() {
+    // this.subscription = this.ngRedux.subscribe(() => {
+    //   var store = this.ngRedux.getState();
+    //   this.counter = store.counter;
+    // });
+  }
+
+  increment() {
+    this.ngRedux.dispatch({type: INCREMENT});
+  }
 }
