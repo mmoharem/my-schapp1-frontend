@@ -20,12 +20,14 @@ export class SecureComponent implements OnInit {
 
   ngOnInit() {
 
-    const header = new HttpHeaders({
-      'Authorization': `Bearer ${this.tokenServ.Token}`
-    });
+    const header: HttpHeaders = this.tokenServ.Header;
+
+    this.httpServ.isLoggedIn();
 
     this.httpServ.adminRedirect(header).subscribe(
-      result => this.user = result,
+      result => {
+        this.user = result;
+      },
       errror => {
         this.tokenServ.removeToken();
         this.router.navigate(['/login']);

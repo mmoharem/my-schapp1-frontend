@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       password: formData.password,
       grant_type: 'password',
       client_id: 2,
-      client_secret: 'FK4fzW4e8xUg4upAiiuV6gjKGv66LKW1PDSXlWSU',
+      client_secret: 'nBhhkmXZgSJxZ1gXa6N22JI70wWKNX6ec3QdhytN',
       scope: '*'
     }
 
@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleResponse(data) {
+    // const header =
     this.tokenServ.setTokrn(data.access_token);
     this.router.navigate(['/secure']);
     this.httpServ.isLoggedIn();

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,12 @@ export class TokenService {
 
   get Token() {
     return localStorage.getItem('token');
+  }
+
+  get Header() {
+    return new HttpHeaders({
+      'Authorization': `Bearer ${this.Token}`
+    });
   }
 
   removeToken() {

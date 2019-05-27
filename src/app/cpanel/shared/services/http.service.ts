@@ -11,7 +11,7 @@ export class HttpService {
 
   baseUrl = 'http://localhost:8000';
 
-  loggedIn: boolean;
+  loggedIn: boolean = false;
   loggedInStateEmit = new Subject();
   emitError = new Subject();
 
@@ -24,7 +24,7 @@ export class HttpService {
   }
 
   adminRedirect(header) {
-    return this.http.get(`${this.baseUrl}/user`, {headers: header});
+    return this.http.get(`${this.baseUrl}/login`, {headers: header});
   }
 
   signUp(data) {
@@ -58,7 +58,13 @@ export class HttpService {
   }
 
   isLoggedIn() {
-    this.loggedIn = localStorage.getItem('token') !== null;
+    let token = localStorage.getItem('token');
+    if(token) {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
+    // this.loggedIn = localStorage.getItem('token') !== null;
     this.loggedInStateEmit.next(this.loggedIn);
     console.log(this.loggedIn);
   }

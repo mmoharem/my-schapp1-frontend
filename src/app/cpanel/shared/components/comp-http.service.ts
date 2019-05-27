@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { TokenService } from '../services/token.service';
 
 export interface compResObj {
   getRes: Response,
@@ -11,7 +12,6 @@ export interface compResObj {
 
   searchRes: Response,
   searchErr: Response
-
 }
 
 @Injectable({
@@ -20,15 +20,19 @@ export interface compResObj {
 
 export class CompHttpService {
 
-  constructor(private http: HttpClient) { }
-
   emittReq = new Subject;
   baseUrl = 'http://127.0.0.1:8000/';
+  header: HttpHeaders;
   searchData;
+
+  constructor(private http: HttpClient,
+              private tokenServ: TokenService)
+  {
+  }
 
   // Get Request
   getRequest(url) {
-    this.http.get(url).subscribe(
+    this.http.get(url, {headers: this.tokenServ.Header}).subscribe(
       (results: Response) => { this.emittReq.next(<compResObj>{getRes: results}); },
       (error: Response) => { this.emittReq.next(<compResObj>{getErr: error}); }
     );
@@ -36,7 +40,7 @@ export class CompHttpService {
 
   // Post Request
   postRequest(url, data) {
-    this.http.post(`${this.baseUrl}${url}`, data).subscribe(
+    this.http.post(`${this.baseUrl}${url}`, data, {headers: this.tokenServ.Header}).subscribe(
       (results: Response) => { this.emittReq.next(<compResObj>{postRes: results}); },
       (error: Response) => { this.emittReq.next(<compResObj>{postErr: error}); }
     );

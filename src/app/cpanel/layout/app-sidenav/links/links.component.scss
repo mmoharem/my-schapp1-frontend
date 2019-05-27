@@ -48,7 +48,7 @@
     widows: 100%;
     text-decoration: none;
     color: rgb(226, 225, 225);
-    font-size: 1.8rem;
+    font-size: 2rem;
 
     &--icon {
       display: block;
@@ -82,6 +82,13 @@
       font-size: 1.4rem;
     }
 
+    .collapsable-arrow2 {
+      margin-left: auto;
+      width: 1.3rem;
+      height: 1.3rem;
+      fill: white;
+      color: white;
+    }
     .collapsable-arrow {
       margin-left: auto;
     }

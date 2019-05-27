@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+
 import { CpanelComponent } from './cpanel.component';
 import { LayoutComponent } from './layout/layout.component';
 import { PublicComponent } from './public/public.component';
@@ -57,6 +59,8 @@ import { FindEmployComponent } from './layout/app-pages/employee/employee-main/f
 import { Calendar1TestComponent } from './layout/app-pages/test/calendar1-test/calendar1-test.component';
 import { Calendar2TestComponent } from './layout/app-pages/test/calendar2-test/calendar2-test.component';
 import { StudAttendComponent } from './layout/app-pages/students/stud-attend/stud-attend.component';
+import { HomeChartsComponent } from './public/home/home-charts/home-charts.component';
+import { Hchart1Component } from './public/home/home-charts/hchart1/hchart1.component';
 // import { PaginationModule } from './shared/components/pagination/pagination.module';
 // import { FindStudentsComponent } from './shared/components/find-students/find-students.component';
 // import { StudTableComponent } from './shared/components/stud-table/stud-table.component';
@@ -145,6 +149,10 @@ import { StudAttendComponent } from './layout/app-pages/students/stud-attend/stu
 
     StudAttendComponent,
 
+    HomeChartsComponent,
+
+    Hchart1Component,
+
     // FindStudentsComponent,
 
     // StudTableComponent,
@@ -156,7 +164,8 @@ import { StudAttendComponent } from './layout/app-pages/students/stud-attend/stu
     MaterialModule,
     FullCalendarModule,
     // PaginationModule,
-    ComponentsModule
+    ComponentsModule,
+    NgxChartsModule
   ],
   exports: [
     CpanelComponent

@@ -5,6 +5,9 @@
         <a routerLink="/" class="nav-link">Home</a>
       </li>
     </ul>
+    <div class="btn">
+        <button color="primary" (click)="checkToken()" mat-raised-button >Token</button>
+      </div>
     <div class="navbar-nav">
       <a routerLink="/login" class="nav-link" *ngIf="!loggedIn">Login</a>
       <a routerLink="/" class="nav-link" (click)="logout()" *ngIf="loggedIn">Logout</a>

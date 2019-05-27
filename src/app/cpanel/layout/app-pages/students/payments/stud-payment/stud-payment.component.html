@@ -52,7 +52,7 @@
     <div class="show-result">
       <mat-card-title class="marginTop-4rem">Search results</mat-card-title>
       <div class="pay-show-stud-form">
-        <table class="app-table app-table__min-h" mat-table [dataSource]="dataS" class="" *ngIf="dataS">
+        <table class="dataTable app-table app-table__min-h" mat-table [dataSource]="dataS" *ngIf="dataS">
 
           <!--- Note that these columns can be defined in any order.
                     The actual rendered columns are set as a property on the row definition" -->
@@ -101,7 +101,7 @@
                 alt="user-image"> -->
               <div *ngIf="element.images[0]">
                 <img class="avatar-img" [src]="'http://127.0.0.1:8000/images/'+element.images[0].filename"
-                alt="user-image">
+                  alt="user-image">
               </div>
             </td>
           </ng-container>

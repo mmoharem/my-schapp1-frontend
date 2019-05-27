@@ -21,16 +21,17 @@ export class OnClickDirective {
   onclick() {
 
     this.isToggle = !this.isToggle;
+    // console.log(this.el.nativeElement.lastChild)
 
     if(this.toggle) {
 
       if(this.el.nativeElement.nextElementSibling.className === 'collapsed-menu') {
-        if(this.el.nativeElement.children[2].innerText === 'keyboard_arrow_right') {
-          // console.log(this.el.nativeElement.children[2].innerText);
-          this.el.nativeElement.children[2].innerText = 'keyboard_arrow_down';
-        }else {
-          this.el.nativeElement.children[2].innerText = 'keyboard_arrow_right';
-        };
+        // if(this.el.nativeElement.children[2].innerText === 'keyboard_arrow_right') {
+        //   // console.log(this.el.nativeElement.children[2].innerText);
+        //   this.el.nativeElement.children[2].innerText = 'keyboard_arrow_down';
+        // }else {
+        //   this.el.nativeElement.children[2].innerText = 'keyboard_arrow_right';
+        // };
 
         // this.rend2.setStyle(this.el.nativeElement.nextElementSibling, 'display', display);
         // console.log(this.el)
@@ -51,42 +52,47 @@ export class OnClickDirective {
     let display = 'none';
     let opacity = 0;
     let time;
-    let clicked;
-    let others = [];
+    let rotate;
+    let clicked = {};
+    let othersDiv = [];
+    let othersImg = [];
 
     if(!this.isToggle) {
       display = 'none';
       opacity = 0;
       time = 0.1
+      rotate = 0;
     } else {
       display = 'block';
       opacity = 1;
       time = 0.3;
+      rotate = 90;
     }
 
     childNode.forEach((el) => {
-      // console.log(el);
+      // console.log(el.firstChild.lastChild);
       if(el.lastChild.className === 'collapsed-menu') {
         // console.log(el.lastChild);
         if(el.lastChild === this.el.nativeElement.nextElementSibling){
-          clicked = el.lastChild;
+          clicked['div'] = el.lastChild;
+          clicked['img'] = el.firstChild.lastChild;
         }else {
-          others.push(el.lastChild);
+          othersDiv.push(el.lastChild);
+          othersImg.push(el.firstChild.lastChild);
         }
 
       }
-    })
+    });
 
-    // console.log(this.el.nativeElement.nextElementSibling);
-    console.log(clicked);
-    console.log(others);
-
-      // others = el;
-
+    // console.log(others);
     this.timeLine
-      .add('start')
-      .to(others, 0.1, {autoAlpha: 0, display: 'none'})
-      .to(clicked, time, {autoAlpha: opacity, display: display, ease: Power0.easeNone})
+      .add('first')
+      .to(othersDiv, 0.1, {autoAlpha: 0, display: 'none', ease: Power0.easeNone}, 'first')
+      .to(othersImg, 0.1, {rotation: 0, ease: Power0.easeNone}, 'first')
+
+      .add('second')
+      .to(clicked['img'], 0.1, {rotation: rotate, ease: Power0.easeNone}, 'second')
+      .to(clicked['div'], time, {autoAlpha: opacity, display: display, ease: Power0.easeNone}, 'second')
     ;
   }
 

@@ -20,6 +20,9 @@ import { ImgUploadService } from './cpanel/shared/services/img-upload.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from "ngx-toastr";
 
+//Charts
+import { NgxChartsModule } from "@swimlane/ngx-charts";
+
 
 //
 import { CpanelModule } from './cpanel/cpanel.module';
@@ -44,6 +47,7 @@ import { PaginationModule } from './cpanel/shared/components/pagination/paginati
     HttpClientModule,
     //
     MaterialModule,
+    NgxChartsModule,
     ToastrModule.forRoot(),
     // PaginationModule
   ],

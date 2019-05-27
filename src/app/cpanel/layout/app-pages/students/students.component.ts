@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpService } from 'src/app/cpanel/shared/services/http.service';
-import { TokenService } from 'src/app/cpanel/shared/services/token.service';
-import { Router } from '@angular/router';
-// import { moment } from "moment/moment";
-import * as moment from 'moment/moment';
+import { StudentsService } from 'src/app/cpanel/shared/services/students.service';
 
 @Component({
   selector: 'app-students',
@@ -13,16 +8,9 @@ import * as moment from 'moment/moment';
 })
 export class StudentsComponent implements OnInit {
 
-  grades = [];
-
-  form: FormGroup;
-  error = [];
-  minDate = new Date();
-  // option;
-  // gender: string;
-
-  constructor() { }
+  constructor(private studServ: StudentsService) { }
 
   ngOnInit() {
+    this.studServ.getGrades();
   }
 }

@@ -15,12 +15,19 @@ export class AppTopnavComponent implements OnInit {
               private httpServ: HttpService) { }
 
   ngOnInit() {
-    this.httpServ.loggedInStateEmit.subscribe((loggedInState: boolean) => this.loggedIn = loggedInState)
+    this.httpServ.loggedInStateEmit.subscribe((loggedInState: boolean) => this.loggedIn = loggedInState);
+
   }
 
   logout() {
     this.tokenServ.removeToken();
     this.httpServ.isLoggedIn();
+    // this.loggedIn = false;
   }
 
+  checkToken() {
+    let token = localStorage.getItem('token');
+    console.log(token);
+
+  }
 }

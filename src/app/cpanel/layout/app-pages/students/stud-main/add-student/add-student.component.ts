@@ -39,10 +39,10 @@ export class AddStudentComponent implements OnInit {
   }
 
   handleResponse(result) {
-    this.tokenServ.setTokrn(result.access_token);
-    this.router.navigate(['/secure']);
-    this.httpServ.isLoggedIn();
-    console.log(result)
+    // this.tokenServ.setTokrn(result.access_token);
+    // this.router.navigate(['/secure']);
+    // this.httpServ.isLoggedIn();
+    // console.log(result)
   }
 
 }

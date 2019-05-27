@@ -15,7 +15,6 @@ export class StudentsService {
   baseUrl = 'http://localhost:8000';
 
   constructor(private http: HttpClient) {
-    this.getGrades();
   }
 
   grades = [];
