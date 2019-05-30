@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 // Redux
 import { NgRedux, NgReduxModule, DevToolsExtension } from "@angular-redux/store";
-import { IAppState, rooReducer, INIT_STATE } from './shared/store/store';
-import { fromJS, Map } from "immutable";
+import { IAppState, rootReducer, INIT_STATE } from './shared/store/store';
 
 import { CpanelComponent } from './cpanel.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -178,8 +177,14 @@ import { Hchart1Component } from './public/home/home-charts/hchart1/hchart1.comp
   ]
 })
 export class CpanelModule {
-  constructor(ngRedux: NgRedux<Map<string, any>>) {
+  constructor(devTools: DevToolsExtension,
+              ngRedux: NgRedux<IAppState>)
+  {
+    const enhancers = isDevMode() ? [devTools.enhancer()] : [];
     // ngRedux.configureStore(rooReducer, { counter: 0 });
-    ngRedux.configureStore(rooReducer, fromJS(INIT_STATE));
+    ngRedux.configureStore(rootReducer, INIT_STATE, [], enhancers);
   }
+  // {
+  //   ngRedux.configureStore(rooReducer, INIT_STATE);
+  // }
 }

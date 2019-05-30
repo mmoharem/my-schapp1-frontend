@@ -5,6 +5,7 @@ import { ImgUploadService } from '../../services/img-upload.service';
 import * as moment from 'moment/moment';
 import { ToastrService } from "ngx-toastr";
 import { CompHttpService } from '../comp-http.service';
+import { select } from "@angular-redux/store";
 
 @Component({
   selector: 'registerForm',
@@ -17,7 +18,8 @@ export class RegisterFormComponent implements OnInit {
     dataType: '',
     url: ''
   }
-  grades = [];
+  @select() grades;
+  // grades = [];
   imgObj;
   form: FormGroup;
 
@@ -28,7 +30,8 @@ export class RegisterFormComponent implements OnInit {
               private compHttp: CompHttpService) { }
 
   ngOnInit() {
-    this.grades = this.studServ.grades;
+    // this.grades = this.studServ.grades;
+    this.studServ.getGrades();
     this.imgUpldServ.emitImgObj.subscribe(imgObj => this.imgObj = imgObj);
     this.buildForm();
   }
