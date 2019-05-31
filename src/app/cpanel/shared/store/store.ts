@@ -1,21 +1,22 @@
-import { GET_GRADES } from './actions';
-import { tassign } from "tassign";
+import { IGradeState, gradesReducer, INIT_GRADES_STATE } from '../../layout/app-pages/school/sch-grade/grades.store/grades.store';
+import { GET_GRADES } from '../../layout/app-pages/school/sch-grade/grades.store/grades.actions';
 
 export interface IAppState {
-  grades: any[];
+  grades: IGradeState;
 }
 
 export const INIT_STATE: IAppState = {
-  grades: []
+  grades: INIT_GRADES_STATE
 }
 
-export function rootReducer(state: IAppState, action): IAppState {
-  switch(action.type) {
-    case GET_GRADES:
+export function rootReducer(state: IGradeState, action): IGradeState {
 
-      return tassign(state, {
-          grades: [...action.grades]
-        });
-  }
+  // switch(action.type) {
+  //   case GET_GRADES: return gradesReducer(state, action);
+
+  //     return tassign(state, {
+  //         grades: [...action.grades]
+  //       });
+  // }
   return state;
 }

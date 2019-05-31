@@ -135,3 +135,16 @@ export interface paymentEl {
   created_at: Date,
   updated_at: Date
 }
+
+export interface grade {
+  name: string,
+  level: string,
+  fees: {
+    id: number,
+    old_schFees : number,
+    old_booksFees : number,
+    schFees : number,
+    booksFees : number,
+    totFees: number
+  }
+}

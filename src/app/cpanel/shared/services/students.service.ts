@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 import { userStudData } from '../interfaces/app-interface';
 import { NgRedux } from "@angular-redux/store";
 import { IAppState } from '../../layout/app-pages/school/sch-grade/grades.store/grades.store';
-import { GET_GRADES } from '../store/actions';
+import { GET_GRADES } from '../../layout/app-pages/school/sch-grade/grades.store/grades.actions';
 
 @Injectable({
   providedIn: 'root'

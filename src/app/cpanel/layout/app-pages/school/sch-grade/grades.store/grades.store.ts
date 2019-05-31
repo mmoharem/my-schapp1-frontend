@@ -1,24 +1,46 @@
-// import { Action } from "ngrx/store";
-// import { GET_GRADES } from "./grades.actions.ts";
+
+import { grade } from 'src/app/cpanel/shared/interfaces/app-interface';
+// import * as grActions from "./grades.actions";
+import {GradeActions, GET_GRADES} from "./grades.actions";
 import { tassign } from "tassign";
 
-export interface IAppState {
-  grades: any[];
+export interface IGradeState {
+  grades: grade[];
 }
 
-export const INIT_STATE: IAppState = {
+export const INIT_GRADES_STATE: IGradeState = {
   grades: []
 }
-export const GET_GRADES = 'GET_GRADES';
 
-export function gradesReducer(state = INIT_STATE, action) {
+export function getGrades(state = INIT_GRADES_STATE, action: GradeActions): any {
   switch(action.type) {
     case GET_GRADES:
 
-      return tassign(state, {
-        grades: [...action.grades]
-      })
-    ;
+    //   let gr = tassign(state, {
+    //     grades: [...state.grades, ...action.payload]
+    //   })
+    // ;
+
+    // let gr = {
+    //   grades: [...action.payload]
+    // };
+
+    let gr = {
+      ...state,
+      grade: action.payload
+    }
+    console.log(gr);
+    // default:
+    //   return state
+    // ;
   }
+}
+
+export function gradesReducer (state: IGradeState, action): IGradeState {
+  switch(action.type) {
+    case GET_GRADES: return getGrades(state, action);
+  }
+
   return state;
+
 }

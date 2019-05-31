@@ -6,6 +6,7 @@ import * as moment from 'moment/moment';
 import { ToastrService } from "ngx-toastr";
 import { CompHttpService } from '../comp-http.service';
 import { select } from "@angular-redux/store";
+import { grade } from '../../interfaces/app-interface';
 
 @Component({
   selector: 'registerForm',
@@ -18,7 +19,7 @@ export class RegisterFormComponent implements OnInit {
     dataType: '',
     url: ''
   }
-  @select() grades;
+  @select() grades: grade[];
   // grades = [];
   imgObj;
   form: FormGroup;

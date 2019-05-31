@@ -4,7 +4,7 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 // Redux
 import { NgRedux, NgReduxModule, DevToolsExtension } from "@angular-redux/store";
-import { IAppState, rootReducer, INIT_STATE } from './shared/store/store';
+import { IAppState, gradesReducer, INIT_STATE } from './layout/app-pages/school/sch-grade/grades.store/grades.store';
 
 import { CpanelComponent } from './cpanel.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -182,7 +182,7 @@ export class CpanelModule {
   {
     const enhancers = isDevMode() ? [devTools.enhancer()] : [];
     // ngRedux.configureStore(rooReducer, { counter: 0 });
-    ngRedux.configureStore(rootReducer, INIT_STATE, [], enhancers);
+    ngRedux.configureStore(gradesReducer, INIT_STATE, [], enhancers);
   }
   // {
   //   ngRedux.configureStore(rooReducer, INIT_STATE);
