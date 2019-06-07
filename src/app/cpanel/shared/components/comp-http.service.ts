@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { TokenService } from '../services/token.service';
+import { NgRedux } from "@angular-redux/store";
+import { IAppState } from '../store/store';
+import { GET_STUDENTS } from '../../layout/app-pages/students/store/students.store';
 
 export interface compResObj {
   getRes: Response,
@@ -26,14 +29,20 @@ export class CompHttpService {
   searchData;
 
   constructor(private http: HttpClient,
-              private tokenServ: TokenService)
+              private tokenServ: TokenService,
+              private ngRedux: NgRedux<IAppState>)
   {
   }
 
   // Get Request
-  getRequest(url) {
+  getRequest(url, userData?) {
+    // this.http.get(url, {headers: this.tokenServ.Header}).subscribe(
+    //   (results: Response) => { this.emittReq.next(<compResObj>{getRes: results}); },
+    //   (error: Response) => { this.emittReq.next(<compResObj>{getErr: error}); }
+    // );
     this.http.get(url, {headers: this.tokenServ.Header}).subscribe(
-      (results: Response) => { this.emittReq.next(<compResObj>{getRes: results}); },
+      (results: Response) =>
+        this.ngRedux.dispatch({type: GET_STUDENTS, users: results['data']['data'], usersData: userData}),
       (error: Response) => { this.emittReq.next(<compResObj>{getErr: error}); }
     );
   }

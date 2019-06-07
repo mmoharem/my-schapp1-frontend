@@ -9,13 +9,9 @@ import { CompHttpService } from 'src/app/cpanel/shared/components/comp-http.serv
 })
 export class StudTablesComponent implements OnInit {
 
+  type: string = 'student';
   // tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
   tableColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'mobilePhone', 'address', 'image'];
-
-  tableObj = {
-    tableColumns: this.tableColumns,
-    type: 'student'
-  };
 
   constructor(private compHttp: CompHttpService) {
 
@@ -26,7 +22,11 @@ export class StudTablesComponent implements OnInit {
   }
 
   getStudents() {
-    this.compHttp.getRequest('http://127.0.0.1:8000/students');
+    let tableObj = {
+      tableColumns: this.tableColumns,
+      type: 'student'
+    };
+    this.compHttp.getRequest('http://127.0.0.1:8000/students', tableObj);
   }
 
   handelResults(results: Response) {

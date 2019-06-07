@@ -19,7 +19,7 @@ export class RegisterFormComponent implements OnInit {
     dataType: '',
     url: ''
   }
-  @select() grades: grade[];
+  @select(s => s.grading.grades) grades;
   // grades = [];
   imgObj;
   form: FormGroup;
@@ -35,6 +35,10 @@ export class RegisterFormComponent implements OnInit {
     this.studServ.getGrades();
     this.imgUpldServ.emitImgObj.subscribe(imgObj => this.imgObj = imgObj);
     this.buildForm();
+    setTimeout(() => {
+    this.grades.subscribe(x => console.log(x))
+
+    }, 2000);
   }
 
   uploadImg(e) {

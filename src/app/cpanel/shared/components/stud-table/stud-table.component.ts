@@ -3,6 +3,7 @@ import { userStudData } from '../../interfaces/app-interface';
 import { CompHttpService, compResObj } from '../comp-http.service';
 import { Router } from '@angular/router';
 import { StudTableService } from './stud-table.service';
+import { select } from "@angular-redux/store";
 
 // export interface tableCol {
 //   id: 'id', name: 'name', gender: 'gender', birthDate: 'birthDate', grade: 'grade',
@@ -17,10 +18,15 @@ import { StudTableService } from './stud-table.service';
 export class StudTableComponent implements OnInit, OnChanges {
 
   @Input() tableObjInp: {type: string,tableColumns:string[]};
+  @Input() typeInp: string = null;
 
   dataType: string;
   tableColInput: string[] = [];
-  dataSInput: userStudData[];
+  // @select(t => t.usersStore.usersData.tableColumns) tableColInput: string[] = [];
+  @select(t => t.student) getStore;
+  // @select(t => `${t}.${this.typeInp}`) getStore2;
+  // @select(t => t.usersStore.users) dataSInput = [];
+  dataSInput = [];
   data: Response;
   // dataS: userStudData[];
 
@@ -34,12 +40,22 @@ export class StudTableComponent implements OnInit, OnChanges {
               private router: Router) { }
 
   ngOnInit() {
+    console.log(this.typeInp)
     this.compHttp.emittReq.subscribe(this);
+    this.getStore.subscribe(t => {
+      this.dataSInput = t.student;
+      this.dataType = t.usersData.type;
+      this.tableColInput = t.usersData.tableColumns;
+    });
+    this.getStore2.subscribe(t => {
+
+      console.log(t)
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.dataType = this.tableObjInp.type;
-    this.tableColInput = this.tableObjInp.tableColumns;
+    // this.dataType = this.tableObjInp.type;
+    // this.tableColInput = this.tableObjInp.tableColumns;
   }
 
 
