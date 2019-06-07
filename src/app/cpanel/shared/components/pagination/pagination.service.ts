@@ -7,7 +7,7 @@ import { CompHttpService } from '../comp-http.service';
   providedIn: 'root'
 })
 
-export class PaginationService {
+export class  PaginationService {
 
   // changeEmit = new Subject;
   // responseEmit = new Subject;

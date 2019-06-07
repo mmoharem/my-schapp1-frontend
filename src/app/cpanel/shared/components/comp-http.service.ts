@@ -41,8 +41,10 @@ export class CompHttpService {
     //   (error: Response) => { this.emittReq.next(<compResObj>{getErr: error}); }
     // );
     this.http.get(url, {headers: this.tokenServ.Header}).subscribe(
-      (results: Response) =>
-        this.ngRedux.dispatch({type: GET_STUDENTS, users: results['data']['data'], usersData: userData}),
+      (results: Response) => {
+        this.ngRedux.dispatch({type: GET_STUDENTS, students: results['data']['data']});
+        this.emittReq.next(<compResObj>{getRes: results});
+      },
       (error: Response) => { this.emittReq.next(<compResObj>{getErr: error}); }
     );
   }

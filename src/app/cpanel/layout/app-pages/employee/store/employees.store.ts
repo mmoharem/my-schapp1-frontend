@@ -3,40 +3,31 @@ import { tassign } from 'tassign';
 import { userStudData } from 'src/app/cpanel/shared/interfaces/app-interface';
 
 export const GET_EMPLOY = 'GET_EMPLOY';
-export const GET_EMPLOY_DATA = 'GET_EMPLOY_DATA';
 
-export interface IUserState {
-  users: userStudData[];
-  usersData: {
-    tableColumns: string[],
-    type: string
-  };
+
+export interface IEmployeeState {
+  employee: userStudData[];
 }
 
-export const INIT_USERS_STATE: IUserState = {
-  users: [],
-  usersData: {
-    tableColumns: [],
-    type: null
-  }
+export const INIT_EMPLOYEE_STATE: IEmployeeState = {
+  employee: [],
 }
 
-function getUsers(state = INIT_USERS_STATE, action): IUserState {
+function getEmployee(state = INIT_EMPLOYEE_STATE, action): IEmployeeState {
   return tassign(state, {
-    users: [...action.users],
-    usersData: action.usersData
+    employee: [...action.employee]
   });
 }
 
-// function setUsersTable(state = INIT_USERS_STATE, action): IUserState {
+// function setUsersTable(state = INIT_EMPLOYEE_STATE, action): IEmployeeState {
 //   return tassign(state, {
 
 //   });
 // }
 
-export function employReducer(state: IUserState = INIT_USERS_STATE, action): IUserState {
+export function employeeReducer(state: IEmployeeState = INIT_EMPLOYEE_STATE, action): IEmployeeState {
   switch(action.type) {
-    case GET_EMPLOY: return getUsers(state, action);
+    case GET_EMPLOY: return getEmployee(state, action);
   }
 
   return state;

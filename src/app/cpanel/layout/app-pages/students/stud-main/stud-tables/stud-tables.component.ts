@@ -13,6 +13,11 @@ export class StudTablesComponent implements OnInit {
   // tableColumns: string[] = ['id', 'firstName', 'lastName', 'birthDate', 'phoneNumber', 'mobilePhone', 'class', 'address', 'image'];
   tableColumns: string[] = ['id', 'name', 'birthDate', 'phoneNumber', 'mobilePhone', 'address', 'image'];
 
+  tableObj = {
+    tableColumns: this.tableColumns,
+    type: 'students'
+  };
+
   constructor(private compHttp: CompHttpService) {
 
   }
@@ -22,11 +27,7 @@ export class StudTablesComponent implements OnInit {
   }
 
   getStudents() {
-    let tableObj = {
-      tableColumns: this.tableColumns,
-      type: 'student'
-    };
-    this.compHttp.getRequest('http://127.0.0.1:8000/students', tableObj);
+    this.compHttp.getRequest('http://127.0.0.1:8000/students');
   }
 
   handelResults(results: Response) {

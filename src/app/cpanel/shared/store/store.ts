@@ -1,19 +1,18 @@
 import { combineReducers } from "redux";
 import { IGradeState, gradesReducer, INIT_GRADES_STATE } from '../../layout/app-pages/school/sch-grade/grades.store/grades.store';
-import { IUserState, INIT_USERS_STATE, usersReducer } from '../../layout/app-pages/students/store/students.store';
-import { teachersReducer } from '../../layout/app-pages/teachers/store/teachers.store';
-import { employReducer } from '../../layout/app-pages/employee/store/employees.store';
+import { IStudentsState, studentsReducer, INIT_STUDENTS_STATE } from '../../layout/app-pages/students/store/students.store';
+import { IEmployeeState, INIT_EMPLOYEE_STATE, employeeReducer } from '../../layout/app-pages/employee/store/employees.store';
 
 export interface IAppState {
   grading: IGradeState;
-  student: IUserState;
-  employee: IUserState;
+  studentStore: IStudentsState;
+  employeeStore: IEmployeeState
 }
 
 export const INIT_STATE: IAppState = {
   grading: INIT_GRADES_STATE,
-  student: INIT_USERS_STATE,
-  employee: INIT_USERS_STATE
+  studentStore: INIT_STUDENTS_STATE,
+  employeeStore: INIT_EMPLOYEE_STATE
 }
 
 // export function rootReducer(state: IAppState, action): IAppState {
@@ -30,7 +29,6 @@ export const INIT_STATE: IAppState = {
 
 export const rootReducer = combineReducers({
   grading: gradesReducer,
-  student: usersReducer,
-  employee: employReducer
-  // teachersStore: teachersReducer
+  studentStore: studentsReducer,
+  employeeStore: employeeReducer
 })

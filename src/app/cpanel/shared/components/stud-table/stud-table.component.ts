@@ -18,16 +18,11 @@ import { select } from "@angular-redux/store";
 export class StudTableComponent implements OnInit, OnChanges {
 
   @Input() tableObjInp: {type: string,tableColumns:string[]};
-  @Input() typeInp: string = null;
 
   dataType: string;
   tableColInput: string[] = [];
-  // @select(t => t.usersStore.usersData.tableColumns) tableColInput: string[] = [];
-  @select(t => t.student) getStore;
-  // @select(t => `${t}.${this.typeInp}`) getStore2;
-  // @select(t => t.usersStore.users) dataSInput = [];
-  dataSInput = [];
-  data: Response;
+  @select(t => t.studentStore.students) dataSInput;
+  paginatData: Response;
   // dataS: userStudData[];
 
   // tableColumns: string[] = [
@@ -40,22 +35,13 @@ export class StudTableComponent implements OnInit, OnChanges {
               private router: Router) { }
 
   ngOnInit() {
-    console.log(this.typeInp)
     this.compHttp.emittReq.subscribe(this);
-    this.getStore.subscribe(t => {
-      this.dataSInput = t.student;
-      this.dataType = t.usersData.type;
-      this.tableColInput = t.usersData.tableColumns;
-    });
-    this.getStore2.subscribe(t => {
-
-      console.log(t)
-    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // this.dataType = this.tableObjInp.type;
-    // this.tableColInput = this.tableObjInp.tableColumns;
+
+    this.dataType = this.tableObjInp.type;
+    this.tableColInput = this.tableObjInp.tableColumns;
   }
 
 
@@ -74,8 +60,8 @@ export class StudTableComponent implements OnInit, OnChanges {
 
 
   handelResults(results: Response) {
-    this.dataSInput = results['data']['data'];
-    this.data = results['data'];
+    // this.dataSInput = results['data']['data'];
+    this.paginatData = results['data'];
   }
 
   handelError(error) {
