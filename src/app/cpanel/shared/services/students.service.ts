@@ -7,8 +7,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import { userStudData } from '../interfaces/app-interface';
 import { NgRedux } from "@angular-redux/store";
-import { IAppState } from '../../layout/app-pages/school/sch-grade/grades.store/grades.store';
-import { GET_GRADES } from '../store/actions';
+import { IAppState } from '../store/store';
+import { GET_GRADES } from '../../layout/app-pages/school/sch-grade/store/grade.store';
 
 @Injectable({
   providedIn: 'root'
@@ -79,7 +79,6 @@ export class StudentsService {
     this.http.get(`${this.baseUrl}/school/grade`)
       .subscribe(
         grades => {
-          console.log(grades)
           this.ngRedux.dispatch({type: GET_GRADES, grades: grades})
         },
         error => console.log(error),

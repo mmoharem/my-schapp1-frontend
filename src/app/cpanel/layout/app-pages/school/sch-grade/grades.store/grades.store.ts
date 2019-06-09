@@ -2,16 +2,16 @@
 // import { GET_GRADES } from "./grades.actions.ts";
 import { tassign } from "tassign";
 
-export interface IAppState {
+export interface IGradeState {
   grades: any[];
 }
 
-export const INIT_STATE: IAppState = {
+export const INIT_GRADES_STATE: IGradeState = {
   grades: []
 }
 export const GET_GRADES = 'GET_GRADES';
 
-export function gradesReducer(state = INIT_STATE, action) {
+export function gradesReducer(state = INIT_GRADES_STATE, action) {
   switch(action.type) {
     case GET_GRADES:
 

@@ -1,21 +1,15 @@
-import { GET_GRADES } from './actions';
-import { tassign } from "tassign";
+import { combineReducers } from "redux";
+import { IGradeState, INIT_GRADES_STATE, gradesReducer } from '../../layout/app-pages/school/sch-grade/grades.store/grades.store';
 
 export interface IAppState {
-  grades: any[];
+  grading: IGradeState;
 }
 
 export const INIT_STATE: IAppState = {
-  grades: []
+  grading: INIT_GRADES_STATE
 }
 
-export function rootReducer(state: IAppState, action): IAppState {
-  switch(action.type) {
-    case GET_GRADES:
 
-      return tassign(state, {
-          grades: [...action.grades]
-        });
-  }
-  return state;
-}
+export const rootReducer = combineReducers({
+  grading: gradesReducer
+})
